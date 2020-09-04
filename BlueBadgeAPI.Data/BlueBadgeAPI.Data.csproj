@@ -87,8 +87,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assignment.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="NeededSkill.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserSkill.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
