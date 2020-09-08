@@ -13,7 +13,10 @@ namespace BlueBadgeAPI.Data
         [Key]
         public int NeededSkillId { get; set; }
 
+<<<<<<< HEAD
         [Required]
+=======
+>>>>>>> Alex
         public string Skill { get; set; }
 
         [ForeignKey(nameof(Project))]

@@ -14,10 +14,17 @@ namespace BlueBadgeAPI.Data
         public int ProjectId { get; set; }
 
         [Required]
+<<<<<<< HEAD
         // add min, max length in models
         public string Title { get; set; }
 
         // add min, max length in models
+=======
+        //add min, max length
+        public string Title { get; set; }
+
+        //add min, max length
+>>>>>>> Alex
         public string Description { get; set; }
 
         [ForeignKey(nameof(ProjectCreator))]

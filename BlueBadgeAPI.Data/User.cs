@@ -12,15 +12,34 @@ namespace BlueBadgeAPI.Data
         [Key]
         public int UserId { get; set; }
 
+<<<<<<< HEAD
         public Guid SomethingId { get; set; }
 
         [Required]
         public string FirstName { get; set; }
 
+=======
+        [Required]
+        public string FirstName { get; set; }
+
+        public Guid LoginId { get; set; }
+
+>>>>>>> Alex
         [Required]
         public string LastName { get; set; }
 
         public string About { get; set; }
 
+<<<<<<< HEAD
+=======
+        public string Name
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
+>>>>>>> Alex
     }
 }
