@@ -9,5 +9,6 @@ namespace BlueBadgeAPI.Models
     public class TeamCreate
     {
         public string Name { get; set; }
+        public int ProjectId { get; set; }
     }
 }

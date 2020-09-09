@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BlueBadgeAPI.Services
 {
     public class AssignmentService
-    {
+    { private readonly Guid _userID;
         private readonly int _assignmentId;
 
         public AssignmentService(int assignmentId)
@@ -71,19 +71,24 @@ namespace BlueBadgeAPI.Services
                     };
             }
         }
-
+        
         public bool UpdateAssignment(AssignmentListItems model)
         {
+            
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Assignments
                         .Single(e => e.AssignmentId == model.AssignmentId);
-                model.UserId = entity.UserId;
-                model.ProjectId = entity.ProjectId;
-                model.TeamId = entity.TeamId;
-                return ctx.SaveChanges() == 1;
+               
+                {
+                    model.UserId = entity.UserId;
+                    model.ProjectId = entity.ProjectId;
+                    model.TeamId = entity.TeamId;
+                    return ctx.SaveChanges() == 1;
+                }
+                return false;
             }
         }
 
@@ -96,7 +101,6 @@ namespace BlueBadgeAPI.Services
                         .Assignments
                         .Single(e => e.AssignmentId == _assignmentId);
                 ctx.Assignments.Remove(entity);
-
                 return ctx.SaveChanges() == 1;
             }
         }

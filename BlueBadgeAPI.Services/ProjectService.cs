@@ -10,11 +10,11 @@ namespace BlueBadgeAPI.Services
 {
     public class ProjectService
     {
-        private readonly int _projectId;
+        private readonly Guid _userId;
 
-        public ProjectService(int projectId)
+        public ProjectService(Guid userId)
         {
-            _projectId = projectId;
+            _userId = userId;
         }
 
         public bool ProjectCreate(ProjectCreate model)
@@ -32,6 +32,27 @@ namespace BlueBadgeAPI.Services
             }
         }
 
+        public IEnumerable<ProjectListItems> GetAllProjects()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var collection = new List<ProjectListItems>();
+                foreach (var item in ctx.Projects)
+                {
+                    var newProjectListItems = new ProjectListItems
+                    {
+                        Title = item.Title,
+                        ProjectId = item.ProjectId
+                    };
+
+                    collection.Add(newProjectListItems);
+                    
+                }
+
+                return collection;
+
+            }
+        }
 
         public IEnumerable<ProjectListItems> GetProjects()
         {
@@ -40,7 +61,7 @@ namespace BlueBadgeAPI.Services
                 var query =
                     ctx
                     .Projects
-                    .Where(e => e.ProjectId == _projectId)
+                    .Where(e => e.ProjectCreator.OwnerId == _userId)
                     .Select(
                         e =>
                         new ProjectListItems
@@ -60,7 +81,7 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .Projects
-                        .Single(e => e.ProjectId == _projectId);
+                        .Single(e => e.ProjectCreator.OwnerId == _userId && e.ProjectId == id);
                 return
                     new ProjectDetails
                     {
@@ -74,54 +95,27 @@ namespace BlueBadgeAPI.Services
 
         public bool UpdateProject(ProjectDetails model)
         {
-                using (var ctx = new ApplicationDbContext())
-                {
-                    var entity =
-                        ctx
-                            .Projects
-                            .Single(e => e.ProjectId == model.ProjectId);
-                    model.Title = entity.Title;
-                    model.Description = entity.Description;
-                    return ctx.SaveChanges() == 1;
-                }
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Projects
+                        .Single(e => e.ProjectId == model.ProjectId);
+                model.Title = entity.Title;
+                model.Description = entity.Description;
+                return ctx.SaveChanges() == 1;
+            }
         }
 
-        public bool DeleteProject()
+        public bool DeleteProject(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Projects
-                        .Single(e => e.ProjectId == _projectId);
+                        .Single(e => e.ProjectCreator.OwnerId == _userId && e.ProjectId == id);
                 ctx.Projects.Remove(entity);
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
-        public bool AddMemberToProject(AssignmentCreate model)
-        {
-            Assignment newAssignment = new Assignment()
-            {
-                ProjectId = model.ProjectId,
-                UserId = model.UserId
-            };
-            using (var ctx = new ApplicationDbContext())
-            {
-                ctx.Assignments.Add(newAssignment);
-                return ctx.SaveChanges() == 1;
-            }
-        }
-
-        public bool RemoveMemberFromProject(int userId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .Assignments  
-                        .Single(e => e.ProjectId == _projectId && e.UserId == userId);
-                ctx.Assignments.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

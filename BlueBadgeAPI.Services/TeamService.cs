@@ -29,6 +29,7 @@ namespace BlueBadgeAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
         public IEnumerable<TeamListItems> GetTeams()
         {
             using (var ctx = new ApplicationDbContext())

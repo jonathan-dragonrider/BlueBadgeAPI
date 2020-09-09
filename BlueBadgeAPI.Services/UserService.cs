@@ -11,7 +11,7 @@ namespace BlueBadgeAPI.Services
     public class UserService
     {
         private readonly Guid _userId;
-
+       
         public UserService(Guid userId)
         {
             _userId = userId;
