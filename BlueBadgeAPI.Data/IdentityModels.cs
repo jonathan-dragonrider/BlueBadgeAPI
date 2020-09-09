@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -17,8 +18,23 @@ namespace BlueBadgeAPI.Data
             // Add custom user claims here
             return userIdentity;
         }
-     
+        [Key]
+        public int MyProperty { get; set; }
+        [Required]
+        public string FirstName { get; set; }
 
+        [Required]
+        public string LastName { get; set; }
+
+        public string About { get; set; }
+
+        public string Name
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
     }
 
 

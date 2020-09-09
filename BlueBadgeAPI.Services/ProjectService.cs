@@ -10,9 +10,9 @@ namespace BlueBadgeAPI.Services
 {
     public class ProjectService
     {
-        private readonly Guid _userId;
+        private readonly string _userId;
 
-        public ProjectService(Guid userId)
+        public ProjectService(string userId)
         {
             _userId = userId;
         }
@@ -21,7 +21,7 @@ namespace BlueBadgeAPI.Services
         {
             var newProject = new Project()
             {
-                UserId = model.UserId,
+                UserId = _userId,
                 Title = model.Title,
                 Description = model.Description
             };
@@ -61,7 +61,7 @@ namespace BlueBadgeAPI.Services
                 var query =
                     ctx
                     .Projects
-                    .Where(e => e.ProjectCreator.OwnerId == _userId)
+                    .Where(e => e.ProjectCreator.Id == _userId)
                     .Select(
                         e =>
                         new ProjectListItems
@@ -81,7 +81,7 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .Projects
-                        .Single(e => e.ProjectCreator.OwnerId == _userId && e.ProjectId == id);
+                        .Single(e => e.ProjectCreator.Id == _userId && e.ProjectId == id);
                 return
                     new ProjectDetails
                     {
@@ -114,7 +114,7 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .Projects
-                        .Single(e => e.ProjectCreator.OwnerId == _userId && e.ProjectId == id);
+                        .Single(e => e.ProjectCreator.Id == _userId && e.ProjectId == id);
                 ctx.Projects.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

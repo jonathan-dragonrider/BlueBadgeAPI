@@ -15,20 +15,20 @@ namespace BlueBadgeAPI.Web.Controllers
     {
         private ProjectService CreateProjectService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             var projectService = new ProjectService(userId);
             return projectService;
         }
         
         //Post
-        public IHttpActionResult Post(ProjectCreate Project)
+        public IHttpActionResult Post(ProjectCreate project)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateProjectService();
 
-            if (!service.ProjectCreate(Project))
+            if (!service.ProjectCreate(project))
                 return InternalServerError();
 
             return Ok();
