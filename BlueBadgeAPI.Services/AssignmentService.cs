@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace BlueBadgeAPI.Services
 {
     public class AssignmentService
-    { private readonly Guid _userID;
+    { 
+        private readonly Guid _userId;
         private readonly int _assignmentId;
 
-        public AssignmentService(int assignmentId)
+        public AssignmentService(Guid userId)
         {
-            _assignmentId = assignmentId;
+            _userId = userId;
         }
-
         public bool AssignmentCreate(AssignmentCreate model)
         {
             var newAssignment = new Assignment()
@@ -35,21 +35,19 @@ namespace BlueBadgeAPI.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                    .Assignments
-                    .Where(e => e.AssignmentId == _assignmentId)
-                    .Select(
-                        e =>
-                        new AssignmentListItems
-                        {
-                            AssignmentId = e.AssignmentId,
-                            UserId = e.UserId,
-                            TeamId = e.TeamId,
-                            ProjectId = e.ProjectId
-                        }
-                        );
-                return query.ToArray();
+                var collection = new List<AssignmentListItems>();
+                foreach (var item in ctx.Assignments)
+                {
+                    var newAssignmentListItems = new AssignmentListItems
+                    {
+                        AssignmentId = item.AssignmentId,
+                        UserId = item.UserId,
+                        ProjectId = item.ProjectId,
+                        TeamId = item.TeamId
+                    };
+                    collection.Add(newAssignmentListItems);
+                }
+                return collection;
             }
         }
 
@@ -60,7 +58,7 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .Assignments
-                        .Single(e => e.AssignmentId == _assignmentId);
+                        .Single(e => e.AssignmentId == id);
                 return
                     new AssignmentDetails
                     {
@@ -81,25 +79,23 @@ namespace BlueBadgeAPI.Services
                     ctx
                         .Assignments
                         .Single(e => e.AssignmentId == model.AssignmentId);
-               
                 {
                     model.UserId = entity.UserId;
                     model.ProjectId = entity.ProjectId;
                     model.TeamId = entity.TeamId;
-                    return ctx.SaveChanges() == 1;
                 }
-                return false;
+                return ctx.SaveChanges() == 1;
             }
         }
 
-        public bool DeleteAssignment()
+        public bool DeleteAssignment(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Assignments
-                        .Single(e => e.AssignmentId == _assignmentId);
+                        .Single(e => e.AssignmentId == id);
                 ctx.Assignments.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

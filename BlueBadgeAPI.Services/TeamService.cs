@@ -10,11 +10,11 @@ namespace BlueBadgeAPI.Services
 {
     public class TeamService
     {
-        private readonly int _teamId;
+        private readonly Guid _userId;
 
-        public TeamService(int teamId)
+        public TeamService(Guid userId)
         {
-            _teamId = teamId;
+            _userId = userId;
         }
 
         public bool TeamCreate(TeamCreate model)
@@ -34,19 +34,17 @@ namespace BlueBadgeAPI.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                    .Teams
-                    .Where(e => e.TeamId == _teamId)
-                    .Select(
-                        e =>
-                        new TeamListItems
-                        {
-                            Name = e.Name,
-                            TeamId = e.TeamId
-                        }
-                        );
-                return query.ToArray();
+                var collection = new List<TeamListItems>();
+                foreach (var item in ctx.Teams)
+                {
+                    var newTeamListItems = new TeamListItems
+                    {
+                        Name = item.Name,
+                        TeamId = item.TeamId
+                    };
+                    collection.Add(newTeamListItems);
+                }
+                return collection;
             }
         }
 
@@ -57,7 +55,7 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .Teams
-                        .Single(e => e.TeamId == _teamId);
+                        .Single(e => e.TeamId == id);
                 return
                     new TeamDetails
                     {
@@ -80,14 +78,14 @@ namespace BlueBadgeAPI.Services
             }
         }
 
-        public bool DeleteTeam(int Id)
+        public bool DeleteTeam(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Teams
-                        .Single(e => e.TeamId == _teamId);
+                        .Single(e => e.TeamId == id);
                 ctx.Teams.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

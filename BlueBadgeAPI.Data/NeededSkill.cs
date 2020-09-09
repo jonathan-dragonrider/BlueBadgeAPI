@@ -16,7 +16,7 @@ namespace BlueBadgeAPI.Data
         [Required]
         public string Skill { get; set; }
 
-        [ForeignKey(nameof(Project))]
+        [ForeignKey(nameof(MotherProject))]
         public int ProjectId { get; set; }
         public virtual Project MotherProject { get; set; }
     }
