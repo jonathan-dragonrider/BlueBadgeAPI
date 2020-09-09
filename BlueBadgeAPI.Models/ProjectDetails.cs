@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace BlueBadgeAPI.Models
 {
-    public class ProjectCreate
+    public class ProjectDetails
     {
-        public int UserId { get; set; }
+        public int ProjectId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Creator { get; set; }
     }
 }

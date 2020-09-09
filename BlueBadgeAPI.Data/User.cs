@@ -15,7 +15,7 @@ namespace BlueBadgeAPI.Data
         [Required]
         public string FirstName { get; set; }
 
-        public Guid LoginId { get; set; }
+        public Guid OwnerId { get; set; }
 
         [Required]
         public string LastName { get; set; }

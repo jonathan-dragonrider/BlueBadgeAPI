@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlueBadgeAPI.Models
 {
-    class UserListItem
+    public class TeamListItems
     {
+        public int TeamId { get; set; }
+        public string Name { get; set; }
     }
 }

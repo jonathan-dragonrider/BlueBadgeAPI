@@ -8,97 +8,86 @@ using System.Threading.Tasks;
 
 namespace BlueBadgeAPI.Services
 {
-    public class UserService
+    public class TeamService
     {
-        private readonly Guid _userId;
+        private readonly int _teamId;
 
-        public UserService(Guid userId)
+        public TeamService(int teamId)
         {
-            _userId = userId;
+            _teamId = teamId;
         }
 
-        public bool UserCreate(UserCreate model)
+        public bool TeamCreate(TeamCreate model)
         {
-            var newUser = new User()
+            var newTeam = new Team()
             {
-                OwnerId = _userId,
-                FirstName = model.FirstName,
-                LastName = model.LastName
+                Name = model.Name
             };
-
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Users.Add(newUser);
+                ctx.Teams.Add(newTeam);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<UserListItems> GetUsers()
+        public IEnumerable<TeamListItems> GetTeams()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Users
-                    .Where(e => e.OwnerId == _userId)
+                    .Teams
+                    .Where(e => e.TeamId == _teamId)
                     .Select(
                         e =>
-                        new UserListItems
+                        new TeamListItems
                         {
                             Name = e.Name,
-                            UserId = e.UserId
+                            TeamId = e.TeamId
                         }
                         );
                 return query.ToArray();
             }
         }
 
-        public UserDetails GetUserById(int id)
+        public TeamDetails GetTeamById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
-                        .Single(e => e.OwnerId == _userId);
+                        .Teams
+                        .Single(e => e.TeamId == _teamId);
                 return
-                    new UserDetails
+                    new TeamDetails
                     {
-                        OwnerId = entity.OwnerId,
-                        UserId = entity.UserId,
-                        Name = entity.Name,
-                        About = entity.About
+                        TeamId = entity.TeamId,
+                        Name = entity.Name
                     };
             }
         }
 
-        public bool UpdateUser(UserDetails model)
+        public bool UpdateTeam(TeamDetails model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
-                        .Single(e => e.OwnerId == model.OwnerId);
-
-                model.OwnerId = entity.OwnerId;
-                model.UserId = entity.UserId;
+                        .Teams
+                        .Single(e => e.TeamId == model.TeamId);
                 model.Name = entity.Name;
-                model.About = entity.About;
-
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public bool DeleteUser(int Id)
+        public bool DeleteTeam(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Users
-                        .Single(e => e.OwnerId == _userId);
-
-                ctx.Users.Remove(entity);
+                        .Teams
+                        .Single(e => e.TeamId == _teamId);
+                ctx.Teams.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

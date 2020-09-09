@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -20,7 +21,16 @@ namespace BlueBadgeAPI.Data
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserSkill> UserSkills { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<NeededSkill> NeededSkills { get; set; }
+        public DbSet<Assignment> Assignments { get; set; }
+
+
         public ApplicationDbContext()
+
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
