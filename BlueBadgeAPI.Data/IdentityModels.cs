@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -36,7 +38,6 @@ namespace BlueBadgeAPI.Data
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<UserSkill> UserSkills { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Project> Projects { get; set; }
