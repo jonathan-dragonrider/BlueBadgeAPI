@@ -14,8 +14,8 @@ namespace BlueBadgeAPI.Data
         public int AssignmentId { get; set; }
 
         [ForeignKey(nameof(User))]
-        public int UserId { get; set; }
-        public virtual User User { get; set; }
+        public string UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         [ForeignKey(nameof(Project))]
         public int ProjectId { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,8 +28,27 @@ namespace BlueBadgeAPI.Data
 >>>>>>> Alex
         public string Description { get; set; }
 
-        [ForeignKey(nameof(ProjectCreator))]
-        public int UserId { get; set; }
-        public virtual User ProjectCreator { get; set; }
+        //[ForeignKey(nameof(ProjectCreator))]
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser ProjectCreator { get; set; }
+
+        //public Guid OwnerId { get; set; }
+        //public User ProjectCreator { get; set; }
+
+
+        //public virtual IdentityUserClaim<Guid> ProjectCreator
+        //{
+        //    get
+        //    {
+        //       return Guid.Parse(User.Identity.GetUserId());
+        //    }
+        //}
+
+        //public Guid UserId => Guid.Parse(ApplicationUser.GetUserId());
+
+
+
+
     }
 }
