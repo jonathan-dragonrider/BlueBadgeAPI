@@ -97,6 +97,10 @@
     <Compile Include="Migrations\202009101405420_deletedProperty.designer.cs">
       <DependentUpon>202009101405420_deletedProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009101530278_CatchingErrors.cs" />
+    <Compile Include="Migrations\202009101530278_CatchingErrors.designer.cs">
+      <DependentUpon>202009101530278_CatchingErrors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NeededSkill.cs" />
     <Compile Include="Project.cs" />
@@ -115,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009101405420_deletedProperty.resx">
       <DependentUpon>202009101405420_deletedProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009101530278_CatchingErrors.resx">
+      <DependentUpon>202009101530278_CatchingErrors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
