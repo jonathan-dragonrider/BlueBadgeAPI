@@ -11,7 +11,6 @@ namespace BlueBadgeAPI.Services
     public class AssignmentService
     { 
         private readonly Guid _userId;
-        private readonly int _assignmentId;
 
         public AssignmentService(Guid userId)
         {

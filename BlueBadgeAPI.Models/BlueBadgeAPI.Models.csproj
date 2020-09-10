@@ -70,9 +70,6 @@
     <Compile Include="TeamCreate.cs" />
     <Compile Include="TeamDetails.cs" />
     <Compile Include="TeamListItems.cs" />
-    <Compile Include="UserCreate.cs" />
-    <Compile Include="UserDetails.cs" />
-    <Compile Include="UserListItems.cs" />
     <Compile Include="UserSkillCreate.cs" />
     <Compile Include="UserSkillDetails.cs" />
     <Compile Include="UserSkillListItems.cs" />
