@@ -17,6 +17,7 @@ using BlueBadgeAPI.Web.Models;
 using BlueBadgeAPI.Web.Providers;
 using BlueBadgeAPI.Web.Results;
 using BlueBadgeAPI.Data;
+using System.Data.Entity.Validation;
 
 namespace BlueBadgeAPI.Web.Controllers
 {
@@ -126,7 +127,7 @@ namespace BlueBadgeAPI.Web.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -259,9 +260,9 @@ namespace BlueBadgeAPI.Web.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -329,10 +330,8 @@ namespace BlueBadgeAPI.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -340,6 +339,20 @@ namespace BlueBadgeAPI.Web.Controllers
 
             return Ok();
         }
+
+        /*public IHttpActionResult Put(User user)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateUserService();
+
+            if (!service.UpdateUser(user))
+                return InternalServerError();
+
+            return Ok();
+        }*/
+
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
@@ -369,7 +382,7 @@ namespace BlueBadgeAPI.Web.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
