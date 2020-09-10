@@ -10,10 +10,10 @@ namespace BlueBadgeAPI.Services
 {
     public class AssignmentService
     { 
-        private readonly Guid _userId;
-        private readonly int _assignmentId;
+        private readonly string _userId;
+        //private readonly int _assignmentId;
 
-        public AssignmentService(Guid userId)
+        public AssignmentService(string userId)
         {
             _userId = userId;
         }
@@ -22,7 +22,7 @@ namespace BlueBadgeAPI.Services
             var newAssignment = new Assignment()
             {
                 ProjectId = model.ProjectId,
-                UserId = model.UserId,
+                UserId = _userId,
                 TeamId = model.TeamId
             };
             using (var ctx = new ApplicationDbContext())

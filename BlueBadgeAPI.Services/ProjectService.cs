@@ -93,7 +93,7 @@ namespace BlueBadgeAPI.Services
             }
         }
 
-        public bool UpdateProject(ProjectDetails model)
+        public bool UpdateProject(ProjectEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -101,8 +101,8 @@ namespace BlueBadgeAPI.Services
                     ctx
                         .Projects
                         .Single(e => e.ProjectId == model.ProjectId);
-                model.Title = entity.Title;
-                model.Description = entity.Description;
+                entity.Title = model.Title;
+                entity.Description = model.Description;
                 return ctx.SaveChanges() == 1;
             }
         }
