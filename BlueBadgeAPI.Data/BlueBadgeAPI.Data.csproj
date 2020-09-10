@@ -93,6 +93,10 @@
     <Compile Include="Migrations\202009091850193_InitialMigration.designer.cs">
       <DependentUpon>202009091850193_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009101405420_deletedProperty.cs" />
+    <Compile Include="Migrations\202009101405420_deletedProperty.designer.cs">
+      <DependentUpon>202009101405420_deletedProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NeededSkill.cs" />
     <Compile Include="Project.cs" />
@@ -108,6 +112,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009091850193_InitialMigration.resx">
       <DependentUpon>202009091850193_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009101405420_deletedProperty.resx">
+      <DependentUpon>202009101405420_deletedProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

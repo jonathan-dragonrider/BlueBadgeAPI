@@ -18,8 +18,7 @@ namespace BlueBadgeAPI.Data
             // Add custom user claims here
             return userIdentity;
         }
-        [Key]
-        public int MyProperty { get; set; }
+
         [Required]
         public string FirstName { get; set; }
 
