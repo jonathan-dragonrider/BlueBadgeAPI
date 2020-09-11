@@ -8,6 +8,7 @@ namespace BlueBadgeAPI.Models
 {
     public class AssignmentCreate
     {
+        public string UserId { get; set; }
         public int TeamId { get; set; }
         public int ProjectId { get; set; }
     }

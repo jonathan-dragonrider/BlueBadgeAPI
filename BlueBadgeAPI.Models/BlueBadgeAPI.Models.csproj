@@ -66,6 +66,7 @@
     <Compile Include="NeededSkillListItems.cs" />
     <Compile Include="ProjectCreate.cs" />
     <Compile Include="ProjectDetails.cs" />
+    <Compile Include="ProjectEdit.cs" />
     <Compile Include="ProjectListItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamCreate.cs" />

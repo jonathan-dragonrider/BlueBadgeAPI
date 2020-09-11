@@ -41,12 +41,12 @@ namespace BlueBadgeAPI.Web.Controllers
             var projects = projectService.GetProjects();
             return Ok(projects);
         }
-        public IHttpActionResult GetAll()
-        {
-            ProjectService projectService = CreateProjectService();
-            var projects = projectService.GetAllProjects();
-            return Ok(projects);
-        }
+        //public IHttpActionResult GetAll()
+        //{
+        //    ProjectService projectService = CreateProjectService();
+        //    var projects = projectService.GetAllProjects();
+        //    return Ok(projects);
+        //}
 
         //Get
         public IHttpActionResult Get(int id)
@@ -57,14 +57,14 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Put
-        public IHttpActionResult Put(ProjectDetails Project)
+        public IHttpActionResult Put(ProjectEdit project)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateProjectService();
 
-            if (!service.UpdateProject(Project))
+            if (!service.UpdateProject(project))
                 return InternalServerError();
 
             return Ok();

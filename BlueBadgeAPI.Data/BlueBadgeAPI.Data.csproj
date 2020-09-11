@@ -95,6 +95,10 @@
       <DependentUpon>202009111332390_UserIdToString.cs</DependentUpon>
 
     </Compile>
+    <Compile Include="Migrations\202009101854261_UpdatedAssignment.cs" />
+    <Compile Include="Migrations\202009101854261_UpdatedAssignment.designer.cs">
+      <DependentUpon>202009101854261_UpdatedAssignment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NeededSkill.cs" />
     <Compile Include="Project.cs" />
@@ -111,6 +115,9 @@
     <EmbeddedResource Include="Migrations\202009111332390_UserIdToString.resx">
       <DependentUpon>202009111332390_UserIdToString.cs</DependentUpon>
 
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009101854261_UpdatedAssignment.resx">
+      <DependentUpon>202009101854261_UpdatedAssignment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

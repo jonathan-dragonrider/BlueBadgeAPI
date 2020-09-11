@@ -93,7 +93,7 @@ namespace BlueBadgeAPI.Services
             }
         }
 
-        public bool UpdateProject(ProjectDetails model)
+        public bool UpdateProject(ProjectEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {

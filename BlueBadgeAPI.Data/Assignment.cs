@@ -22,7 +22,6 @@ namespace BlueBadgeAPI.Data
 
         [ForeignKey(nameof(Team))]
         public int TeamId { get; set; }
-
         public virtual Team Team { get; set; }
     }
 }

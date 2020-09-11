@@ -73,7 +73,7 @@ namespace BlueBadgeAPI.Services
                     ctx
                         .Teams
                         .Single(e => e.TeamId == model.TeamId);
-                model.Name = entity.Name;
+                entity.Name = model.Name;
                 return ctx.SaveChanges() == 1;
             }
         }
