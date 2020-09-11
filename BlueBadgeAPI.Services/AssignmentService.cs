@@ -10,9 +10,9 @@ namespace BlueBadgeAPI.Services
 {
     public class AssignmentService
     { 
-        private readonly Guid _userId;
+        private readonly string _userId;
 
-        public AssignmentService(Guid userId)
+        public AssignmentService(string userId)
         {
             _userId = userId;
         }
@@ -21,7 +21,7 @@ namespace BlueBadgeAPI.Services
             var newAssignment = new Assignment()
             {
                 ProjectId = model.ProjectId,
-                UserId = model.UserId,
+                UserId = _userId,
                 TeamId = model.TeamId
             };
             using (var ctx = new ApplicationDbContext())
@@ -40,7 +40,7 @@ namespace BlueBadgeAPI.Services
                     var newAssignmentListItems = new AssignmentListItems
                     {
                         AssignmentId = item.AssignmentId,
-                        UserId = item.UserId,
+                        UserId = _userId,
                         ProjectId = item.ProjectId,
                         TeamId = item.TeamId
                     };
@@ -62,9 +62,9 @@ namespace BlueBadgeAPI.Services
                     new AssignmentDetails
                     {
                         AssignmentId = entity.AssignmentId,
-                        UserName = entity.User.Name,
-                        TeamName = entity.Team.Name,
-                        ProjectTitle = entity.Project.Title
+                        UserId = entity.UserId,
+                        ProjectId = entity.ProjectId,
+                        TeamId = entity.TeamId
                     };
             }
         }
@@ -79,7 +79,7 @@ namespace BlueBadgeAPI.Services
                         .Assignments
                         .Single(e => e.AssignmentId == model.AssignmentId);
                 {
-                    model.UserId = entity.UserId;
+                    model.UserId = _userId;
                     model.ProjectId = entity.ProjectId;
                     model.TeamId = entity.TeamId;
                 }
