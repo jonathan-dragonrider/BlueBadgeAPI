@@ -11,7 +11,6 @@ namespace BlueBadgeAPI.Services
     public class AssignmentService
     { 
         private readonly string _userId;
-        //private readonly int _assignmentId;
 
         public AssignmentService(string userId)
         {
@@ -41,7 +40,7 @@ namespace BlueBadgeAPI.Services
                     var newAssignmentListItems = new AssignmentListItems
                     {
                         AssignmentId = item.AssignmentId,
-                        UserId = item.UserId,
+                        UserId = _userId,
                         ProjectId = item.ProjectId,
                         TeamId = item.TeamId
                     };
@@ -63,14 +62,14 @@ namespace BlueBadgeAPI.Services
                     new AssignmentDetails
                     {
                         AssignmentId = entity.AssignmentId,
-                        UserName = entity.User.Name,
-                        TeamName = entity.Team.Name,
-                        ProjectTitle = entity.Project.Title
+                        UserId = entity.UserId,
+                        ProjectId = entity.ProjectId,
+                        TeamId = entity.TeamId
                     };
             }
         }
         
-        public bool UpdateAssignment(AssignmentListItems model)
+        public bool UpdateAssignment(AssignmentEdit model)
         {
             
             using (var ctx = new ApplicationDbContext())
@@ -80,9 +79,8 @@ namespace BlueBadgeAPI.Services
                         .Assignments
                         .Single(e => e.AssignmentId == model.AssignmentId);
                 {
-                    model.UserId = entity.UserId;
-                    model.ProjectId = entity.ProjectId;
-                    model.TeamId = entity.TeamId;
+                    entity.ProjectId = model.ProjectId;
+                    entity.TeamId = model.TeamId;
                 }
                 return ctx.SaveChanges() == 1;
             }

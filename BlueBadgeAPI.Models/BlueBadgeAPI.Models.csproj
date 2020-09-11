@@ -59,35 +59,18 @@
   <ItemGroup>
     <Compile Include="AssignmentCreate.cs" />
     <Compile Include="AssignmentDetails.cs" />
+    <Compile Include="AssignmentEdit.cs" />
     <Compile Include="AssignmentListItems.cs" />
-    <Compile Include="NeededSkillCreate.cs" />
     <Compile Include="NeededSkillDetails.cs" />
     <Compile Include="NeededSkillListItems.cs" />
-    <Compile Include="ProjectCreate.cs" />
     <Compile Include="ProjectDetails.cs" />
     <Compile Include="ProjectEdit.cs" />
     <Compile Include="ProjectListItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NeededSkillCreate.cs" />
-    <Compile Include="NeededSkillListItem.cs" />
-    <Compile Include="ProjectCreate.cs" />
-    <Compile Include="ProjectListItem.cs" />
-    <Compile Include="TeamCreate.cs" />
-    <Compile Include="TeamListItem.cs" />
-    <Compile Include="UserCreate.cs" />
-    <Compile Include="UserListItem.cs" />
-    <Compile Include="UserSkillCreate.cs" />
-    <Compile Include="UserSkillListItem.cs" />
-    <Compile Include="TeamCreate.cs" />
     <Compile Include="TeamDetails.cs" />
     <Compile Include="TeamListItems.cs" />
-    <Compile Include="UserCreate.cs" />
-    <Compile Include="UserDetails.cs" />
-    <Compile Include="UserListItems.cs" />
-    <Compile Include="UserSkillCreate.cs" />
     <Compile Include="UserSkillDetails.cs" />
     <Compile Include="UserSkillListItems.cs" />
-
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

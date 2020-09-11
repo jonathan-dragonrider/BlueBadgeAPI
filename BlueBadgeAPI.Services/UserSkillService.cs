@@ -10,19 +10,19 @@ namespace BlueBadgeAPI.Services
 {
     public class UserSkillService
     {
-        private readonly int _userSkillId;
+        private readonly string _userId;
 
-        public UserSkillService(int userSkillId)
+        public UserSkillService(string userSkillId)
         {
-            _userSkillId = userSkillId;
+            _userId = userSkillId;
         }
 
         public bool UserSkillCreate(UserSkillCreate model)
         {
             var newUserSkill = new UserSkill()
             {
-                Skill = model.Skill,
-                UserId = model.UserId
+                UserId = _userId,
+                Skill = model.Skill
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -37,13 +37,13 @@ namespace BlueBadgeAPI.Services
                 var query =
                     ctx
                     .UserSkills
-                    .Where(e => e.UserSkillId == _userSkillId)
+                    .Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new UserSkillListItems
                         {
-                            Skill = e.Skill,
-                            UserSkillId = e.UserSkillId
+                            UserSkillId = e.UserSkillId,
+                            Skill = e.Skill
                         }
                         );
                 return query.ToArray();
@@ -57,12 +57,13 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .UserSkills
-                        .Single(e => e.UserSkillId == _userSkillId);
+                        .Single(e => e.UserId == _userId && e.UserSkillId == id);
                 return
                     new UserSkillDetails
                     {
                         UserSkillId = entity.UserSkillId,
-                        Skill = entity.Skill
+                        Skill = entity.Skill,
+                        UserWithSkill = entity.ApplicationUser.Name
                     };
             }
         }
@@ -80,14 +81,14 @@ namespace BlueBadgeAPI.Services
             }
         }
 
-        public bool DeleteUserSkill(int Id)
+        public bool DeleteUserSkill(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .UserSkills
-                        .Single(e => e.UserSkillId == _userSkillId);
+                        .Single(e => e.UserId == _userId && e.UserSkillId == id);
                 ctx.UserSkills.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

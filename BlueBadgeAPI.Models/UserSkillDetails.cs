@@ -10,6 +10,6 @@ namespace BlueBadgeAPI.Models
     {
         public int UserSkillId { get; set; }
         public string Skill { get; set; }
-        public string User { get; set; }
+        public string UserWithSkill { get; set; }
     }
 }
