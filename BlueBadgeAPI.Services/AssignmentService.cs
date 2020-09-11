@@ -2,6 +2,7 @@
 using BlueBadgeAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,7 +69,7 @@ namespace BlueBadgeAPI.Services
         
         public bool UpdateAssignment(AssignmentEdit model)
         {
-            
+
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =

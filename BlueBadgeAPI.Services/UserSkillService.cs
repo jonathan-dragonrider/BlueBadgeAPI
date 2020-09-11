@@ -21,8 +21,8 @@ namespace BlueBadgeAPI.Services
         {
             var newUserSkill = new UserSkill()
             {
-                UserId = _userId,
-                Skill = model.Skill
+                Skill = model.Skill,
+                UserId = _userId
             };
             using (var ctx = new ApplicationDbContext())
             {
