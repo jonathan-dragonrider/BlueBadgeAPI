@@ -77,8 +77,10 @@ namespace BlueBadgeAPI.Services
                         .Assignments
                         .Single(e => e.AssignmentId == model.AssignmentId);
                 {
+
                     entity.ProjectId = model.ProjectId;
                     entity.TeamId = model.TeamId;
+
                 }
                 return ctx.SaveChanges() == 1;
             }

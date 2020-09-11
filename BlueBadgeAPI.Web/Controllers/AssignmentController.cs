@@ -12,7 +12,7 @@ namespace BlueBadgeAPI.Web.Controllers
 {
     public class AssignmentController : ApiController
     {
-        private AssignmentService CreateAssignmentService()
+        public AssignmentService CreateAssignmentService()
         {
             var assignmentService = new AssignmentService();
             return assignmentService;
