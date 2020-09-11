@@ -405,7 +405,7 @@
       <Name>BlueBadgeAPI.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlueBadgeAPI.Services\BlueBadgeAPI.Services.csproj">
-      <Project>{af87cc23-dbb7-4a75-8247-a4d9dbbf0c07}</Project>
+      <Project>{AF87CC23-DBB7-4A75-8247-A4D9DBBF0C07}</Project>
       <Name>BlueBadgeAPI.Services</Name>
     </ProjectReference>
   </ItemGroup>
