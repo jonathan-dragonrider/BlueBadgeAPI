@@ -69,7 +69,7 @@ namespace BlueBadgeAPI.Services
             }
         }
         
-        public bool UpdateAssignment(AssignmentListItems model)
+        public bool UpdateAssignment(AssignmentEdit model)
         {
             
             using (var ctx = new ApplicationDbContext())
@@ -79,9 +79,8 @@ namespace BlueBadgeAPI.Services
                         .Assignments
                         .Single(e => e.AssignmentId == model.AssignmentId);
                 {
-                    model.UserId = _userId;
-                    model.ProjectId = entity.ProjectId;
-                    model.TeamId = entity.TeamId;
+                    entity.ProjectId = model.ProjectId;
+                    entity.TeamId = model.TeamId;
                 }
                 return ctx.SaveChanges() == 1;
             }
