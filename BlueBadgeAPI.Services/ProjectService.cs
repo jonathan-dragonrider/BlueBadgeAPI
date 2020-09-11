@@ -10,18 +10,16 @@ namespace BlueBadgeAPI.Services
 {
     public class ProjectService
     {
-        private readonly string _userId;
 
-        public ProjectService(string userId)
+        public ProjectService()
         {
-            _userId = userId;
         }
 
         public bool ProjectCreate(ProjectCreate model)
         {
             var newProject = new Project()
             {
-                UserId = _userId,
+                UserId = model.UserId,
                 Title = model.Title,
                 Description = model.Description
             };
@@ -58,19 +56,18 @@ namespace BlueBadgeAPI.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                    .Projects
-                    .Where(e => e.ProjectCreator.Id == _userId)
-                    .Select(
-                        e =>
-                        new ProjectListItems
-                        {
-                            Title = e.Title,
-                            ProjectId = e.ProjectId
-                        }
-                        );
-                return query.ToArray();
+                var collection = new List<ProjectListItems>();
+                foreach (var item in ctx.Projects)
+                {
+                    var projectListItems = new ProjectListItems
+                    {
+                        ProjectOwnerId = item.UserId,
+                        ProjectId = item.ProjectId,
+                        Title = item.Title
+                    };
+                    collection.Add(projectListItems);
+                }
+                return collection;
             }
         }
 
@@ -81,7 +78,7 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .Projects
-                        .Single(e => e.ProjectCreator.Id == _userId && e.ProjectId == id);
+                        .Single(e => e.ProjectId == id);
                 return
                     new ProjectDetails
                     {
@@ -114,7 +111,7 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .Projects
-                        .Single(e => e.ProjectCreator.Id == _userId && e.ProjectId == id);
+                        .Single(e => e.ProjectId == id);
                 ctx.Projects.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }

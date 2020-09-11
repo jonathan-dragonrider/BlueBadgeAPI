@@ -15,8 +15,7 @@ namespace BlueBadgeAPI.Web.Controllers
     {
         private ProjectService CreateProjectService()
         {
-            var userId = User.Identity.GetUserId();
-            var projectService = new ProjectService(userId);
+            var projectService = new ProjectService();
             return projectService;
         }
         
