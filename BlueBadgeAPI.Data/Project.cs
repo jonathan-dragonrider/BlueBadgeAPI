@@ -14,7 +14,6 @@ namespace BlueBadgeAPI.Data
         [Key]
         public int ProjectId { get; set; }
 
-        [Required]
         //add min, max length
         public string Title { get; set; }
 

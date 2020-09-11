@@ -14,7 +14,7 @@ namespace BlueBadgeAPI.Web.Controllers
     {
         private AssignmentService CreateAssignmentService()
         {
-            var userId =User.Identity.GetUserId();
+            var userId = User.Identity.GetUserId();
             var assignmentService = new AssignmentService(userId);
             return assignmentService;
         }
@@ -56,14 +56,14 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Put
-        public IHttpActionResult Put(AssignmentListItems Assignment)
+        public IHttpActionResult Put(AssignmentEdit assignment)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateAssignmentService();
 
-            if (!service.UpdateAssignment(Assignment))
+            if (!service.UpdateAssignment(assignment))
                 return InternalServerError();
 
             return Ok();

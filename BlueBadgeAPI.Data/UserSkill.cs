@@ -15,9 +15,8 @@ namespace BlueBadgeAPI.Data
 
         [Required]
         public string Skill { get; set; }
-
-        [ForeignKey(nameof(User))]
         public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

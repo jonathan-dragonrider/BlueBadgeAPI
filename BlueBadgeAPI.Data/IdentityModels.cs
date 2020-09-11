@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -55,6 +55,7 @@ namespace BlueBadgeAPI.Data
         {
             return new ApplicationDbContext();
         }
+        // This is where DbSet goes
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -68,6 +69,7 @@ namespace BlueBadgeAPI.Data
         }
 
     }
+
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
         public IdentityUserLoginConfiguration()
@@ -83,5 +85,4 @@ namespace BlueBadgeAPI.Data
             HasKey(iur => iur.UserId);
         }
     }
-
 }
