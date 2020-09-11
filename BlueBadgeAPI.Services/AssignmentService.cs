@@ -2,6 +2,7 @@
 using BlueBadgeAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,10 @@ using System.Threading.Tasks;
 namespace BlueBadgeAPI.Services
 {
     public class AssignmentService
-    { 
-        private readonly Guid _userId;
-        private readonly int _assignmentId;
+    {
+        private readonly string _userId;
 
-        public AssignmentService(Guid userId)
+        public AssignmentService(string userId)
         {
             _userId = userId;
         }
@@ -21,8 +21,8 @@ namespace BlueBadgeAPI.Services
         {
             var newAssignment = new Assignment()
             {
+                UserId = _userId,
                 ProjectId = model.ProjectId,
-                UserId = model.UserId,
                 TeamId = model.TeamId
             };
             using (var ctx = new ApplicationDbContext())
@@ -41,7 +41,7 @@ namespace BlueBadgeAPI.Services
                     var newAssignmentListItems = new AssignmentListItems
                     {
                         AssignmentId = item.AssignmentId,
-                        UserId = item.UserId,
+                        UserId = _userId,
                         ProjectId = item.ProjectId,
                         TeamId = item.TeamId
                     };
@@ -69,10 +69,10 @@ namespace BlueBadgeAPI.Services
                     };
             }
         }
-        
+
         public bool UpdateAssignment(AssignmentListItems model)
         {
-            
+
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =

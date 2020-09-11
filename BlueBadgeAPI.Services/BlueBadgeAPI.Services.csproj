@@ -62,7 +62,6 @@
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamService.cs" />
-    <Compile Include="UserService.cs" />
     <Compile Include="UserSkillService.cs" />
   </ItemGroup>
   <ItemGroup>

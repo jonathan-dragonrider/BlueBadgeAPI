@@ -10,6 +10,5 @@ namespace BlueBadgeAPI.Models
     {
         public int TeamId { get; set; }
         public int ProjectId { get; set; }
-        public int UserId { get; set; }
     }
 }

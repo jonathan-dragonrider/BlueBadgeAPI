@@ -57,14 +57,14 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Put
-        public IHttpActionResult Put(ProjectDetails Project)
+        public IHttpActionResult Put(ProjectEdit project)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateProjectService();
 
-            if (!service.UpdateProject(Project))
+            if (!service.UpdateProject(project))
                 return InternalServerError();
 
             return Ok();
