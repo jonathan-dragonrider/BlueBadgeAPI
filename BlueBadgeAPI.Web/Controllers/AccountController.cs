@@ -331,13 +331,30 @@ namespace BlueBadgeAPI.Web.Controllers
             }
 
             var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-            if (!result.Succeeded)
+
+            try
             {
-                return GetErrorResult(result);
+
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                if (!result.Succeeded)
+                {
+                    return GetErrorResult(result);
+                }
             }
 
-            return Ok();
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        Console.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
+
+                return Ok();
+
         }
 
         /*public IHttpActionResult Put(User user)
@@ -386,6 +403,26 @@ namespace BlueBadgeAPI.Web.Controllers
             }
             return Ok();
         }
+
+        // Get UserId
+
+        //public IHttpActionResult Get()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var collection = new List<UserIdViewModel>();
+        //        foreach (var item in ctx.ApplicationUser)
+        //        {
+        //            var userIdListItems = new UserIdViewModel
+        //            {
+        //                UserId = item.UserId
+        //            };
+        //            collection.Add(userIdListItems);
+        //        }
+        //        return Ok(collection);
+        //    }
+        //}
+
 
         protected override void Dispose(bool disposing)
         {

@@ -10,18 +10,15 @@ using System.Threading.Tasks;
 namespace BlueBadgeAPI.Services
 {
     public class AssignmentService
-    {
-        private readonly string _userId;
-
-        public AssignmentService(string userId)
+    { 
+        public AssignmentService()
         {
-            _userId = userId;
         }
         public bool AssignmentCreate(AssignmentCreate model)
         {
             var newAssignment = new Assignment()
             {
-                UserId = _userId,
+                UserId = model.UserId,
                 ProjectId = model.ProjectId,
                 TeamId = model.TeamId
             };
@@ -41,7 +38,7 @@ namespace BlueBadgeAPI.Services
                     var newAssignmentListItems = new AssignmentListItems
                     {
                         AssignmentId = item.AssignmentId,
-                        UserId = _userId,
+                        UserId = item.UserId,
                         ProjectId = item.ProjectId,
                         TeamId = item.TeamId
                     };

@@ -40,4 +40,9 @@ namespace BlueBadgeAPI.Web.Models
 
         public string ProviderKey { get; set; }
     }
+
+    public class UserIdViewModel
+    {
+        public string UserId { get; set; }
+    }
 }
