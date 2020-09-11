@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="AssignmentCreate.cs" />
     <Compile Include="AssignmentDetails.cs" />
+    <Compile Include="AssignmentEdit.cs" />
     <Compile Include="AssignmentListItems.cs" />
     <Compile Include="NeededSkillCreate.cs" />
     <Compile Include="NeededSkillDetails.cs" />
