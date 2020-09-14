@@ -116,5 +116,27 @@ namespace BlueBadgeAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public IEnumerable<NeededSkillDetails> GetProjectByNeededSkill(string skill)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .NeededSkills
+                        .Where(e => e.Skill == skill)
+                        .Select(
+                            e =>
+                                new NeededSkillDetails
+                                {
+                                    Skill = e.Skill,
+                                    ProjectTitle = e.MotherProject.Title,
+                                    ProjectId = e.MotherProject.ProjectId
+                                }
+                                ).ToArray();
+                return entity;
+                
+            }
+        }
     }
 }

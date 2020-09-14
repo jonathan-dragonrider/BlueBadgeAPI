@@ -7,20 +7,17 @@ namespace BlueBadgeAPI.Web.Controllers
 {
     public class NeededSkillController : ApiController
     {
-        private NeededSkillService CreateProjectService()
-        {
-            var userId = User.Identity.GetUserId();
-            var neededSkillService = new NeededSkillService();
-            return neededSkillService;
-        }
 
         //Post
+        //[Route("api/NeededSkillController/Post")]
+        [Route("api/NeededSkill")]
+        [HttpPost]
         public IHttpActionResult Post(NeededSkillCreate neededSkill)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateProjectService();
+            var service = Service();
 
             if (!service.NeededSkillCreate(neededSkill))
                 return InternalServerError();
@@ -29,28 +26,31 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Get
+        [HttpGet]
         public IHttpActionResult Get()
         {
-            NeededSkillService projectService = CreateProjectService();
-            var projects = projectService.GetNeededSkill();
-            return Ok();
+            NeededSkillService neededSkillService = Service();
+            var neededSkills = neededSkillService.GetNeededSkill();
+            return Ok(neededSkills);
         }
 
         //Get
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
-            NeededSkillService projectService = CreateProjectService();
-            var projects = projectService.GetNeededSkillById(id);
-            return Ok(projects);
+            NeededSkillService neededSkillService = Service();
+            var neededSkills = neededSkillService.GetNeededSkillById(id);
+            return Ok(neededSkills);
         }
 
         //Put
-        public IHttpActionResult Put(NeededSkillDetails neededSkill)
+        [HttpPut]
+        public IHttpActionResult Put(NeededSkillEdit neededSkill)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateProjectService();
+            var service = Service();
 
             if (!service.UpdateNeededSkill(neededSkill))
                 return InternalServerError();
@@ -58,16 +58,23 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok();
         }
 
-
         //Delete
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateProjectService();
+            var service = Service();
 
             if (!service.DeleteNeededSkill(id))
                 return InternalServerError();
 
             return Ok();
+        }
+
+        public NeededSkillService Service()
+        {
+            var userId = User.Identity.GetUserId();
+            var neededSkillService = new NeededSkillService();
+            return neededSkillService;
         }
     }
 }

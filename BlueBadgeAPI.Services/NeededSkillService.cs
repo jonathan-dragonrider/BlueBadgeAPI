@@ -56,14 +56,14 @@ namespace BlueBadgeAPI.Services
                 return
                     new NeededSkillDetails
                     {
-                        NeededSkillId = entity.NeededSkillId,
                         Skill = entity.Skill,
+                        ProjectId = entity.ProjectId,
                         ProjectTitle = entity.MotherProject.Title
                     };
             }
         }
 
-        public bool UpdateNeededSkill(NeededSkillDetails model)
+        public bool UpdateNeededSkill(NeededSkillEdit model)
         {
 
             using (var ctx = new ApplicationDbContext())
