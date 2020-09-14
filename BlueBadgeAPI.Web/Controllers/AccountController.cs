@@ -357,20 +357,6 @@ namespace BlueBadgeAPI.Web.Controllers
 
         }
 
-        /*public IHttpActionResult Put(User user)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var service = CreateUserService();
-
-            if (!service.UpdateUser(user))
-                return InternalServerError();
-
-            return Ok();
-        }*/
-
-
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
