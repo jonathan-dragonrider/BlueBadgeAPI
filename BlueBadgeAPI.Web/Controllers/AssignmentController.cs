@@ -29,7 +29,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.AssignmentCreate(assignment))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("Assignment Created");
         }
 
         //Get
@@ -37,7 +37,7 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             AssignmentService assignmentService = CreateAssignmentService();
             var assignments = assignmentService.GetAssignments();
-            return Ok(assignments);
+            return Ok("Assignments Recieved");
         }
 
         //Get Id
@@ -45,7 +45,7 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             AssignmentService assignmentService = CreateAssignmentService();
             var assignments = assignmentService.GetAssignmentById(id);
-            return Ok(assignments);
+            return Ok("Assignments Recieved");
         }
 
         //Put
@@ -59,7 +59,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateAssignment(assignment))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("Assignment Updated");
         }
 
 
@@ -71,7 +71,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteAssignment(id))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("Assignment Deleted");
         }
     }
 }
