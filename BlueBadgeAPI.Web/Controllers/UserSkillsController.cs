@@ -40,12 +40,12 @@ namespace BlueBadgeAPI.Web.Controllers
             var userSkill = UserSkillService.GetUserSkills();
             return Ok(userSkill);
         }
-        public IHttpActionResult GetAll()
-        {
-            UserSkillService UserSkillService = CreateUserSkillService();
-            var userSkill = UserSkillService.GetUserSkills();
-            return Ok(userSkill);
-        }
+        //public IHttpActionResult GetAll()
+        //{
+        //    UserSkillService UserSkillService = CreateUserSkillService();
+        //    var userSkill = UserSkillService.GetUserSkills();
+        //    return Ok(userSkill);
+        //}
 
         
 
@@ -65,6 +65,8 @@ namespace BlueBadgeAPI.Web.Controllers
 
 
         //Delete
+        //[Route("api/UserSkills/{id}")]
+        //[HttpDelete]
         public IHttpActionResult Delete(int userSkillId)
         {
             var service = CreateUserSkillService();

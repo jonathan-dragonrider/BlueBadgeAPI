@@ -22,7 +22,7 @@ namespace BlueBadgeAPI.Services
             var newUserSkill = new UserSkill()
             {
                 Skill = model.Skill,
-                UserId = _userId
+                UserId = model.UserId
             };
             using (var ctx = new ApplicationDbContext())
             {
@@ -63,7 +63,8 @@ namespace BlueBadgeAPI.Services
                     {
                         UserSkillId = entity.UserSkillId,
                         Skill = entity.Skill,
-                        UserWithSkill = entity.ApplicationUser.Name
+                        UserName = entity.ApplicationUser.Name,
+                        UserId = entity.UserId
                     };
             }
         }
@@ -76,7 +77,7 @@ namespace BlueBadgeAPI.Services
                     ctx
                         .UserSkills
                         .Single(e => e.UserSkillId == model.UserSkillId);
-                model.Skill = entity.Skill;
+                entity.Skill = model.Skill;
                 return ctx.SaveChanges() == 1;
             }
         }

@@ -422,7 +422,18 @@ namespace BlueBadgeAPI.Web.Controllers
         //        return Ok(collection);
         //    }
         //}
-
+        [Route("{skill}")]
+        public IHttpActionResult GetByUserSkill(string skill)
+        {
+            var accountService = CreateAccountService();
+            var users = accountService.GetUsersBySkill(skill);
+            return Ok(users);
+        }
+        private AccountService CreateAccountService()
+        {
+            var accountService = new AccountService();
+            return accountService;
+        }
 
         protected override void Dispose(bool disposing)
         {
