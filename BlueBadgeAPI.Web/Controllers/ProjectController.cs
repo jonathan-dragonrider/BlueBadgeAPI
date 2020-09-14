@@ -29,7 +29,7 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.ProjectCreate(project))
                 return InternalServerError();
-            return Ok();
+            return Ok("Project Created");
 
         }
 
@@ -38,7 +38,7 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjects();
-            return Ok(projects);
+            return Ok("Projects Recieved");
         }
         //public IHttpActionResult GetAll()
         //{
@@ -52,7 +52,7 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjectByNeededSkill(skill);
-            return Ok(projects);
+            return Ok("Projects Recieved");
         }
 
         //Get
@@ -60,7 +60,7 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjectById(id);
-            return Ok(projects);
+            return Ok("Projects Recieved");
         }
 
         //Put
@@ -74,7 +74,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateProject(project))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("Project updated");
         }
 
         
@@ -86,7 +86,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteProject(id))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("Project deleted");
         }
     }
 }

@@ -21,7 +21,7 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.NeededSkillCreate(neededSkill))
                 return InternalServerError();
-            return Ok();
+            return Ok("Skill Created");
 
         }
 
@@ -32,7 +32,7 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             NeededSkillService neededSkillService = Service();
             var neededSkills = neededSkillService.GetNeededSkill();
-            return Ok(neededSkills);
+            return Ok("Skills Recived");
         }
 
         //Get
@@ -42,7 +42,7 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             NeededSkillService neededSkillService = Service();
             var neededSkills = neededSkillService.GetNeededSkillById(id);
-            return Ok(neededSkills);
+            return Ok("Skills Recived");
         }
 
         //Put
@@ -58,7 +58,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateNeededSkill(neededSkill))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("Skill Updated");
         }
 
         //Delete
@@ -71,7 +71,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteNeededSkill(id))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("Skill Deleted");
         }
 
         public NeededSkillService Service()
@@ -82,4 +82,3 @@ namespace BlueBadgeAPI.Web.Controllers
         }
     }
 }
-
