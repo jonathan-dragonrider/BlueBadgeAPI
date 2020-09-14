@@ -26,6 +26,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Get
+        [Route("api/NeededSkill")]
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -35,6 +36,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Get
+        [Route("api/NeededSkill/{id}")]
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -44,6 +46,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Put
+        [Route("api/NeededSkill")]
         [HttpPut]
         public IHttpActionResult Put(NeededSkillEdit neededSkill)
         {
@@ -59,6 +62,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Delete
+        [Route("api/NeededSkill/{id}")]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {

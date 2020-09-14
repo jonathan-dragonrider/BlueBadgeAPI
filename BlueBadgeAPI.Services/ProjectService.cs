@@ -29,28 +29,28 @@ namespace BlueBadgeAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+ 
+        //public IEnumerable<ProjectListItems> GetAllProjects()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var collection = new List<ProjectListItems>();
+        //        foreach (var item in ctx.Projects)
+        //        {
+        //            var newProjectListItems = new ProjectListItems
+        //            {
+        //                Title = item.Title,
+        //                ProjectId = item.ProjectId
+        //            };
 
-        public IEnumerable<ProjectListItems> GetAllProjects()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var collection = new List<ProjectListItems>();
-                foreach (var item in ctx.Projects)
-                {
-                    var newProjectListItems = new ProjectListItems
-                    {
-                        Title = item.Title,
-                        ProjectId = item.ProjectId
-                    };
-
-                    collection.Add(newProjectListItems);
+        //            collection.Add(newProjectListItems);
                     
-                }
+        //        }
 
-                return collection;
+        //        return collection;
 
-            }
-        }
+        //    }
+        //}
 
         public IEnumerable<ProjectListItems> GetProjects()
         {

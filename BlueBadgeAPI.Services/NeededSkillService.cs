@@ -72,6 +72,12 @@ namespace BlueBadgeAPI.Services
                     ctx
                         .NeededSkills
                         .Single(e => e.NeededSkillId == model.NeededSkillId);
+
+                if (entity.Skill == model.Skill)
+                {
+                    return true;
+                }
+
                 {
                     entity.Skill = model.Skill;
                 }

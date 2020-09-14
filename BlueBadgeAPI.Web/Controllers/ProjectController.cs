@@ -13,7 +13,6 @@ namespace BlueBadgeAPI.Web.Controllers
 {
     public class ProjectController : ApiController
     {
-        string log = "";
         private ProjectService CreateProjectService()
         {
             var projectService = new ProjectService();
@@ -30,9 +29,7 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.ProjectCreate(project))
                 return InternalServerError();
-            string newLog = log + "Created New Project";
-            log = newLog;
-            return Ok(log);
+            return Ok();
 
         }
 
@@ -41,14 +38,20 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjects();
-            string newLog = log + "Got Projects";
-            log = newLog;
-            return Ok(log);
+            return Ok(projects);
         }
-        public IHttpActionResult GetAll()
+        //public IHttpActionResult GetAll()
+        //{
+        //    ProjectService projectService = CreateProjectService();
+        //    var projects = projectService.GetAllProjects();
+        //    return Ok(projects);
+        //}
+
+        [Route("api/Project/{skill}")]
+        public IHttpActionResult GetByNeededSkill(string skill)
         {
             ProjectService projectService = CreateProjectService();
-            var projects = projectService.GetAllProjects();
+            var projects = projectService.GetProjectByNeededSkill(skill);
             return Ok(projects);
         }
 
