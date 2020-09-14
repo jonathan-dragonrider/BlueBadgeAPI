@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlueBadgeAPI.Models
 {
-    public class UserSkillCreate
+    public class NeededSkillEdit
     {
+        public int NeededSkillId { get; set; }
         public string Skill { get; set; }
-        public string UserId { get; set; }
     }
 }

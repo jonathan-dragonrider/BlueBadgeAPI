@@ -29,8 +29,8 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.ProjectCreate(project))
                 return InternalServerError();
-
             return Ok();
+
         }
 
         //Get
@@ -46,6 +46,14 @@ namespace BlueBadgeAPI.Web.Controllers
         //    var projects = projectService.GetAllProjects();
         //    return Ok(projects);
         //}
+
+        [Route("api/Project/{skill}")]
+        public IHttpActionResult GetByNeededSkill(string skill)
+        {
+            ProjectService projectService = CreateProjectService();
+            var projects = projectService.GetProjectByNeededSkill(skill);
+            return Ok(projects);
+        }
 
         //Get
         public IHttpActionResult Get(int id)

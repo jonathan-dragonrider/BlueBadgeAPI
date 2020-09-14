@@ -10,13 +10,9 @@ namespace BlueBadgeAPI.Services
 {
     public class NeededSkillService
     {
-        private readonly int _neededSkillId;
-
-        public NeededSkillService(int neededSkillId)
+        public NeededSkillService()
         {
-            _neededSkillId = neededSkillId;
         }
-
         public bool NeededSkillCreate(NeededSkillCreate model)
         {
             var newNeededSkill = new NeededSkill()
@@ -30,23 +26,22 @@ namespace BlueBadgeAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<NeededSkillListItems> GetNeededSkills()
+        public IEnumerable<NeededSkillListItems> GetNeededSkill()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                    .NeededSkills
-                    .Where(e => e.NeededSkillId == _neededSkillId)
-                    .Select(
-                        e =>
-                        new NeededSkillListItems
-                        {
-                            Skill = e.Skill,
-                            NeededSkillId = e.NeededSkillId
-                        }
-                        );
-                return query.ToArray();
+                var collection = new List<NeededSkillListItems>();
+                foreach (var item in ctx.NeededSkills)
+                {
+                    var newNeededSkillListItems = new NeededSkillListItems
+                    {
+                        NeededSkillId = item.NeededSkillId,
+                        Skill = item.Skill,
+                        ProjectTitle = item.MotherProject.Title
+                    };
+                    collection.Add(newNeededSkillListItems);
+                }
+                return collection;
             }
         }
 
@@ -57,40 +52,48 @@ namespace BlueBadgeAPI.Services
                 var entity =
                     ctx
                         .NeededSkills
-                        .Single(e => e.NeededSkillId == _neededSkillId);
+                        .Single(e => e.NeededSkillId == id);
                 return
                     new NeededSkillDetails
                     {
-                        NeededSkillId = entity.NeededSkillId,
                         Skill = entity.Skill,
+                        ProjectId = entity.ProjectId,
                         ProjectTitle = entity.MotherProject.Title
                     };
             }
         }
 
-        public bool UpdateNeededSkill(NeededSkillDetails model)
+        public bool UpdateNeededSkill(NeededSkillEdit model)
         {
+
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .NeededSkills
                         .Single(e => e.NeededSkillId == model.NeededSkillId);
-                model.Skill = entity.Skill;
+
+                if (entity.Skill == model.Skill)
+                {
+                    return true;
+                }
+
+                {
+                    entity.Skill = model.Skill;
+                }
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public bool DeleteNeededSkill(int Id)
+        public bool DeleteNeededSkill(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .NeededSkills
-                        .Single(e => e.NeededSkillId == _neededSkillId);
+                        .Single(e => e.NeededSkillId == id);
                 ctx.NeededSkills.Remove(entity);
-
                 return ctx.SaveChanges() == 1;
             }
         }

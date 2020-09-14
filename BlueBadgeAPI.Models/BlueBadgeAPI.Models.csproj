@@ -63,6 +63,7 @@
     <Compile Include="AssignmentListItems.cs" />
     <Compile Include="NeededSkillCreate.cs" />
     <Compile Include="NeededSkillDetails.cs" />
+    <Compile Include="NeededSkillEdit.cs" />
     <Compile Include="NeededSkillListItems.cs" />
     <Compile Include="ProjectCreate.cs" />
     <Compile Include="ProjectDetails.cs" />

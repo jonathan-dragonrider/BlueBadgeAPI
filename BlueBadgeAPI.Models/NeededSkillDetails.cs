@@ -8,8 +8,8 @@ namespace BlueBadgeAPI.Models
 {
     public class NeededSkillDetails
     {
-        public int NeededSkillId { get; set; }
         public string Skill { get; set; }
         public string ProjectTitle { get; set; }
+        public int ProjectId { get; set; }
     }
 }

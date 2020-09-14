@@ -38,12 +38,12 @@ namespace BlueBadgeAPI.Data
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<UserSkill> UserSkills { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<NeededSkill> NeededSkills { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
-
 
         public ApplicationDbContext()
 
@@ -55,9 +55,7 @@ namespace BlueBadgeAPI.Data
         {
             return new ApplicationDbContext();
         }
-
         // This is where DbSet goes
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
