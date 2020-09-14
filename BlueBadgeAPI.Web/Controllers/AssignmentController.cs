@@ -18,7 +18,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return assignmentService;
         }
 
-        //Post
+        /// <summary>
+        /// Create an assignment.
+        /// </summary>
         public IHttpActionResult Post(AssignmentCreate assignment)
         {
             if (!ModelState.IsValid)
@@ -32,7 +34,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Assignment Created");
         }
 
-        //Get
+        /// <summary>
+        /// Get all assignments.
+        /// </summary>
         public IHttpActionResult Get()
         {
             AssignmentService assignmentService = CreateAssignmentService();
@@ -40,7 +44,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Assignments Recieved");
         }
 
-        //Get Id
+        /// <summary>
+        /// Get an assignment by Id.
+        /// </summary>
         public IHttpActionResult Get(int id)
         {
             AssignmentService assignmentService = CreateAssignmentService();
@@ -48,7 +54,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Assignments Recieved");
         }
 
-        //Put
+        /// <summary>
+        /// Update existing assignment.
+        /// </summary>
         public IHttpActionResult Put(AssignmentEdit assignment)
         {
             if (!ModelState.IsValid)
@@ -62,8 +70,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Assignment Updated");
         }
 
-
-        //Delete
+        /// <summary>
+        /// Delete existing assignment.
+        /// </summary>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateAssignmentService();

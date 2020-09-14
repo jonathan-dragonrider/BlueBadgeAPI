@@ -390,24 +390,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok();
         }
 
-        // Get UserId
-
-        //public IHttpActionResult Get()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var collection = new List<UserIdViewModel>();
-        //        foreach (var item in ctx.ApplicationUser)
-        //        {
-        //            var userIdListItems = new UserIdViewModel
-        //            {
-        //                UserId = item.UserId
-        //            };
-        //            collection.Add(userIdListItems);
-        //        }
-        //        return Ok(collection);
-        //    }
-        //}
+        /// <summary>
+        /// Find users by skill.
+        /// </summary>
         [Route("{skill}")]
         public IHttpActionResult GetByUserSkill(string skill)
         {

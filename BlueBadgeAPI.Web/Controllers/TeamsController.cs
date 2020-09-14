@@ -19,7 +19,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return TeamService;
         }
 
-        //Post
+        /// <summary>
+        /// Create a project team.
+        /// </summary>
         public IHttpActionResult Post(TeamCreate Team)
         {
             if (!ModelState.IsValid)
@@ -33,21 +35,19 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Team Created");
         }
 
-        //Get
+        /// <summary>
+        /// Get all teams.
+        /// </summary>
         public IHttpActionResult Get()
         {
             TeamService TeamService = CreateTeamService();
             var Teams = TeamService.GetTeams();
             return Ok("Teams Recieved");
         }
-        public IHttpActionResult GetAll()
-        {
-            TeamService TeamService = CreateTeamService();
-            var Teams = TeamService.GetTeams();
-            return Ok("Teams Recieved");
-        }
 
-        //Get
+        /// <summary>
+        /// Get a team by Id.
+        /// </summary>
         public IHttpActionResult Get(int id)
         {
             TeamService TeamService = CreateTeamService();
@@ -55,7 +55,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Team Recieved");
         }
 
-        //Put
+        /// <summary>
+        /// Update existing team.
+        /// </summary>
         public IHttpActionResult Put(TeamDetails Team)
         {
             if (!ModelState.IsValid)
@@ -69,8 +71,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Teams Updated");
         }
 
-
-        //Delete
+        /// <summary>
+        /// Delete existing team.
+        /// </summary>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateTeamService();

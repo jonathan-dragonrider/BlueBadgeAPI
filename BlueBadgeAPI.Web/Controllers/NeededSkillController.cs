@@ -8,8 +8,9 @@ namespace BlueBadgeAPI.Web.Controllers
     public class NeededSkillController : ApiController
     {
 
-        //Post
-        //[Route("api/NeededSkillController/Post")]
+        /// <summary>
+        /// Add a needed skill for a project.
+        /// </summary>
         [Route("api/NeededSkill")]
         [HttpPost]
         public IHttpActionResult Post(NeededSkillCreate neededSkill)
@@ -25,7 +26,9 @@ namespace BlueBadgeAPI.Web.Controllers
 
         }
 
-        //Get
+        /// <summary>
+        /// Get all needed skills.
+        /// </summary>
         [Route("api/NeededSkill")]
         [HttpGet]
         public IHttpActionResult Get()
@@ -35,7 +38,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Skills Recived");
         }
 
-        //Get
+        /// <summary>
+        /// Get a needed skill by Id.
+        /// </summary>
         [Route("api/NeededSkill/{id}")]
         [HttpGet]
         public IHttpActionResult Get(int id)
@@ -45,7 +50,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Skills Recived");
         }
 
-        //Put
+        /// <summary>
+        /// Update existing needed skill.
+        /// </summary>
         [Route("api/NeededSkill")]
         [HttpPut]
         public IHttpActionResult Put(NeededSkillEdit neededSkill)
@@ -61,7 +68,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Skill Updated");
         }
 
-        //Delete
+        /// <summary>
+        /// Delete needed skill by Id.
+        /// </summary>
         [Route("api/NeededSkill/{id}")]
         [HttpDelete]
         public IHttpActionResult Delete(int id)

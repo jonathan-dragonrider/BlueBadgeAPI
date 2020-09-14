@@ -18,8 +18,10 @@ namespace BlueBadgeAPI.Web.Controllers
             var projectService = new ProjectService();
             return projectService;
         }
-        
-        //Post
+
+        /// <summary>
+        /// Create a project.
+        /// </summary>
         public IHttpActionResult Post(ProjectCreate project)
         {
             if (!ModelState.IsValid)
@@ -33,20 +35,19 @@ namespace BlueBadgeAPI.Web.Controllers
 
         }
 
-        //Get
+        /// <summary>
+        /// Get all projects.
+        /// </summary>
         public IHttpActionResult Get()
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjects();
             return Ok("Projects Recieved");
         }
-        //public IHttpActionResult GetAll()
-        //{
-        //    ProjectService projectService = CreateProjectService();
-        //    var projects = projectService.GetAllProjects();
-        //    return Ok(projects);
-        //}
 
+        /// <summary>
+        /// Find projects by desired skills.
+        /// </summary>
         [Route("api/Project/{skill}")]
         public IHttpActionResult GetByNeededSkill(string skill)
         {
@@ -55,7 +56,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Projects Recieved");
         }
 
-        //Get
+        /// <summary>
+        /// Get project by Id.
+        /// </summary>
         public IHttpActionResult Get(int id)
         {
             ProjectService projectService = CreateProjectService();
@@ -63,7 +66,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Projects Recieved");
         }
 
-        //Put
+        /// <summary>
+        /// Update existing project.
+        /// </summary>
         public IHttpActionResult Put(ProjectEdit project)
         {
             if (!ModelState.IsValid)
@@ -77,8 +82,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok("Project updated");
         }
 
-        
-        //Delete
+        /// <summary>
+        /// Delete existing project.
+        /// </summary>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateProjectService();
