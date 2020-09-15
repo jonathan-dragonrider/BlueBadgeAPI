@@ -90,9 +90,9 @@
     <Compile Include="Assignment.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Migrations\202009151323132_Add-Migrtion LogAdd.cs" />
-    <Compile Include="Migrations\202009151323132_Add-Migrtion LogAdd.designer.cs">
-      <DependentUpon>202009151323132_Add-Migrtion LogAdd.cs</DependentUpon>
+    <Compile Include="Migrations\202009151549173_LogsNStuff.cs" />
+    <Compile Include="Migrations\202009151549173_LogsNStuff.designer.cs">
+      <DependentUpon>202009151549173_LogsNStuff.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NeededSkill.cs" />
@@ -106,8 +106,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009151323132_Add-Migrtion LogAdd.resx">
-      <DependentUpon>202009151323132_Add-Migrtion LogAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009151549173_LogsNStuff.resx">
+      <DependentUpon>202009151549173_LogsNStuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

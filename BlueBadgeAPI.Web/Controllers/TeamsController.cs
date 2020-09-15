@@ -38,7 +38,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.TeamCreate(Team))
                 return InternalServerError();
 
-            string newLog = "Team Deleted";
+            string newLog = "Team Created";
             var logService = CreateLogService();
             logService.LogCreate(newLog);
 

@@ -35,7 +35,6 @@ namespace BlueBadgeAPI.Services
                 {
                     var newLogListItems = new Log
                     {
-                        LogId = item.LogId,
                         WhatHappened = item.WhatHappened
                     };
                     collection.Add(newLogListItems);
