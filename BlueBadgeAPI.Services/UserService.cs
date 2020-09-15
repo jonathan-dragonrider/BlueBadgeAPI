@@ -1,5 +1,6 @@
 ﻿using BlueBadgeAPI.Data;
 using BlueBadgeAPI.Models;
+using BlueBadgeAPI.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,34 @@ namespace BlueBadgeAPI.Web.Models
         {
 
         }
+
+        public UserDetail GetUserByUserName(string userName)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var userDetail = new UserDetail();
+
+                var userEntity = ctx
+                                    .Users
+                                    .Where(e => e.UserName == userName)
+                                    .Select(
+                                        e =>
+                                            userDetail{
+                                                User
+                
+                                         
+                                            )
+
+                
+
+               
+                        
+                        
+                        
+            }
+        }
+
+
         public IEnumerable<UserSkillDetails> GetUsersBySkill(string skill)
         {
             using (var ctx = new ApplicationDbContext())
