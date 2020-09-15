@@ -486,6 +486,11 @@
             Find users by skill.
             </summary>
         </member>
+        <member name="M:BlueBadgeAPI.Web.Controllers.AccountController.GetUserByUserName(System.String)">
+            <summary>
+            Display user information.
+            </summary>
+        </member>
         <member name="M:BlueBadgeAPI.Web.Controllers.AssignmentController.Post(BlueBadgeAPI.Models.AssignmentCreate)">
             <summary>
             Create an assignment.

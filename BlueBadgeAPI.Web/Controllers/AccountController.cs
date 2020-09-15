@@ -400,6 +400,20 @@ namespace BlueBadgeAPI.Web.Controllers
             var users = accountService.GetUsersBySkill(skill);
             return Ok(users);
         }
+
+        /// <summary>
+        /// Display user information.
+        /// </summary>
+        [Route("username")]
+        [HttpGet]
+        public IHttpActionResult GetUserByUserName(string userName)
+        {
+            var accountService = CreateAccountService();
+            var users = accountService.GetUserByUserName(userName);
+            return Ok(users);
+        }
+
+        //[Route("")]
         private AccountService CreateAccountService()
         {
             var accountService = new AccountService();
