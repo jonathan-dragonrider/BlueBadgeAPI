@@ -31,31 +31,31 @@ EntityFramework v6.4.4
 jQuery v3.5.1
 jQuery.Validation v1.19.2
 Microsoft.aspNet.Identity.Core v2.2.3
-Microsoft.AspNet.Identity.EntityFramework
-Microft.AspNet.Identity.Orwin
-Microsoft.AspNet.WebApi
-Microsoft.AspNet.WebApi.Client
-Microsoft.AspNet.WebApi.Core
-Microsoft.AspNet.WebApi.HelpPage
-Microsoft.AspNet.WebApi.Owin
-Microsoft.AspNet.WebApi.WebHost
-Microsoft.CodeDom.Providers.DotNetCompilerPlatform
-Microsoft.jQuery.Unobtrusive.Validation
-Microsoft.Owin
-Microsoft.Owin.Host.SystemWeb
-Microsoft.Owin.Security
-Microsoft.Owin.Security.Cookies
-Microsoft.Owin.Security.Facebook
-Microsoft.Owin.Security.Google
-Microsoft.Owin.Security.MicrosoftAccount
-Microsoft.Owin.Security.OAuth
-Microsoft.Owin.Security.Twitter
-Microsoft.Web.Infrastructure
-Modernizr
-Newtonsoft.Json
-Owin
-popper.js
-WebGrease
+Microsoft.AspNet.Identity.EntityFramework v2.2.3
+Microft.AspNet.Identity.Orwin v2.2.3
+Microsoft.AspNet.WebApi v5.2.7
+Microsoft.AspNet.WebApi.Client v5.2.7
+Microsoft.AspNet.WebApi.Core v5.2.7
+Microsoft.AspNet.WebApi.HelpPage v5.2.7
+Microsoft.AspNet.WebApi.Owin v4.1.1
+Microsoft.AspNet.WebApi.WebHost v5.2.7
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform v3.6.0
+Microsoft.jQuery.Unobtrusive.Validation v3.2.11
+Microsoft.Owin v4.1.1
+Microsoft.Owin.Host.SystemWeb v4.1.1
+Microsoft.Owin.Security v4.1.1
+Microsoft.Owin.Security.Cookies v4.1.1
+Microsoft.Owin.Security.Facebook v4.1.1
+Microsoft.Owin.Security.Google v4.1.1
+Microsoft.Owin.Security.MicrosoftAccount v4.1.1
+Microsoft.Owin.Security.OAuth v4.1.1
+Microsoft.Owin.Security.Twitter v4.1.1
+Microsoft.Web.Infrastructure v1.0.0
+Modernizr v2.8.3
+Newtonsoft.Json v12.0.3
+Owin v1.0.0
+popper.js v1.16.1
+WebGrease v1.6.0
 
 
 INSTALLATION
