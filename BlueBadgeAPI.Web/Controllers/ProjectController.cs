@@ -47,7 +47,7 @@ namespace BlueBadgeAPI.Web.Controllers
         //    return Ok(projects);
         //}
 
-        [Route("api/Project/{skill}")]
+        [Route("api/Project/skill/{skill}")]
         public IHttpActionResult GetByNeededSkill(string skill)
         {
             ProjectService projectService = CreateProjectService();
