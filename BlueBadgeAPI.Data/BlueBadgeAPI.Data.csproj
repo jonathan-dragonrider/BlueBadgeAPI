@@ -89,11 +89,10 @@
   <ItemGroup>
     <Compile Include="Assignment.cs" />
     <Compile Include="IdentityModels.cs" />
-
+    <Compile Include="Log.cs" />
     <Compile Include="Migrations\202009111332390_UserIdToString.cs" />
     <Compile Include="Migrations\202009111332390_UserIdToString.designer.cs">
       <DependentUpon>202009111332390_UserIdToString.cs</DependentUpon>
-
     </Compile>
     <Compile Include="Migrations\202009101854261_UpdatedAssignment.cs" />
     <Compile Include="Migrations\202009101854261_UpdatedAssignment.designer.cs">
@@ -111,7 +110,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-
     <EmbeddedResource Include="Migrations\202009111332390_UserIdToString.resx">
       <DependentUpon>202009111332390_UserIdToString.cs</DependentUpon>
     </EmbeddedResource>

@@ -30,7 +30,8 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UserSkillCreate(userSkill))
                 return InternalServerError();
 
-            return Ok("Skill Created");
+            string newLog = "Skill Created \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
         //Get
@@ -38,7 +39,9 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             UserSkillService UserSkillService = CreateUserSkillService();
             var userSkill = UserSkillService.GetUserSkills();
-            return Ok("Skills Reiceved");
+
+            string newLog = "Skills Recieved \n";
+            return Ok(LogData().GetLogData(newLog));
         }
         //public IHttpActionResult GetAll()
         //{
@@ -60,7 +63,8 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateUserSkill(userSkill))
                 return InternalServerError();
 
-            return Ok("Skill Updated");
+            string newLog = "Skill Updated \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
 
@@ -74,7 +78,14 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteUserSkill(userSkillId))
                 return InternalServerError();
 
-            return Ok("Skill Delete");
+            string newLog = "Skill Deleted \n";
+            return Ok(LogData().GetLogData(newLog));
+        }
+
+        public Log LogData()
+        {
+            var logOne = new Log();
+            return logOne;
         }
     }
 }

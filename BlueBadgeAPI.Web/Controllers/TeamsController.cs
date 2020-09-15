@@ -30,7 +30,8 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.TeamCreate(Team))
                 return InternalServerError();
 
-            return Ok("Team Created");
+            string newLog = "Team Created \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
         //Get
@@ -38,13 +39,17 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             TeamService TeamService = CreateTeamService();
             var Teams = TeamService.GetTeams();
-            return Ok("Teams Recieved");
+
+            string newLog = "Teams Recieved \n";
+            return Ok(LogData().GetLogData(newLog));
         }
         public IHttpActionResult GetAll()
         {
             TeamService TeamService = CreateTeamService();
             var Teams = TeamService.GetTeams();
-            return Ok("Teams Recieved");
+
+            string newLog = "Teams Recieved \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
         //Get
@@ -52,7 +57,9 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             TeamService TeamService = CreateTeamService();
             var Teams = TeamService.GetTeamById(id);
-            return Ok("Team Recieved");
+
+            string newLog = "Team Recieved \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
         //Put
@@ -78,7 +85,14 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteTeam(id))
                 return InternalServerError();
 
-            return Ok("Teams Deleted");
+            string newLog = "Team Deleted \n";
+            return Ok(LogData().GetLogData(newLog));
+        }
+
+        public Log LogData()
+        {
+            var logOne = new Log();
+            return logOne;
         }
     }
 }

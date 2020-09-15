@@ -1,5 +1,6 @@
 ﻿using BlueBadgeAPI.Models;
 using BlueBadgeAPI.Services;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using System.Web.Http;
 
@@ -21,7 +22,9 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.NeededSkillCreate(neededSkill))
                 return InternalServerError();
-            return Ok("Skill Created");
+
+            string newLog = "Skill Created \n";
+            return Ok(LogData().GetLogData(newLog));
 
         }
 
@@ -32,7 +35,8 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             NeededSkillService neededSkillService = Service();
             var neededSkills = neededSkillService.GetNeededSkill();
-            return Ok("Skills Recived");
+            string newLog = "Skill Created \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
         //Get
@@ -42,7 +46,8 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             NeededSkillService neededSkillService = Service();
             var neededSkills = neededSkillService.GetNeededSkillById(id);
-            return Ok("Skills Recived");
+            string newLog = "Skill Recieved \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
         //Put
@@ -58,7 +63,8 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateNeededSkill(neededSkill))
                 return InternalServerError();
 
-            return Ok("Skill Updated");
+            string newLog = "Skill Updated \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
         //Delete
@@ -70,8 +76,9 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.DeleteNeededSkill(id))
                 return InternalServerError();
-
-            return Ok("Skill Deleted");
+            
+            string newLog = "Skill Dleted \n";
+            return Ok(LogData().GetLogData(newLog));
         }
 
         public NeededSkillService Service()
@@ -79,6 +86,12 @@ namespace BlueBadgeAPI.Web.Controllers
             var userId = User.Identity.GetUserId();
             var neededSkillService = new NeededSkillService();
             return neededSkillService;
+        }
+
+        public Log LogData()
+        {
+            var logOne = new Log();
+            return logOne;
         }
     }
 }
