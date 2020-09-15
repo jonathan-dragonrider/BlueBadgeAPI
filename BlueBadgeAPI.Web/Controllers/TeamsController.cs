@@ -19,6 +19,15 @@ namespace BlueBadgeAPI.Web.Controllers
             return TeamService;
         }
 
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
+        }
+
+        //Post
+        [Route("api/Teams")]
+        [HttpPost]
         /// <summary>
         /// Create a project team.
         /// </summary>
@@ -32,9 +41,15 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.TeamCreate(Team))
                 return InternalServerError();
 
-            return Ok("Team Created");
+            string newLog = "Team Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
+        //Get
+        [Route("api/Teams")]
         /// <summary>
         /// Get all teams.
         /// </summary>
@@ -42,7 +57,12 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             TeamService TeamService = CreateTeamService();
             var Teams = TeamService.GetTeams();
-            return Ok("Teams Recieved");
+
+            string newLog = "All Teams Recieved";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(Teams);
         }
 
         /// <summary>
@@ -52,9 +72,16 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             TeamService TeamService = CreateTeamService();
             var Teams = TeamService.GetTeamById(id);
-            return Ok("Team Recieved");
+
+            string newLog = "Team Recieved By Id";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(Teams);
         }
 
+        //Put
+        [Route("api/Teams/Update")]
         /// <summary>
         /// Update existing team.
         /// </summary>
@@ -68,7 +95,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateTeam(Team))
                 return InternalServerError();
 
-            return Ok("Teams Updated");
+            string newLog = "Team Updated";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         /// <summary>
@@ -81,7 +112,13 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteTeam(id))
                 return InternalServerError();
 
-            return Ok("Teams Deleted");
+            string newLog = "Team Deleted";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
     }
-}
+ }
+
+

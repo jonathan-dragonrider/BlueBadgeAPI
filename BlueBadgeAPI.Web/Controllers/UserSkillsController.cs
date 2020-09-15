@@ -18,7 +18,15 @@ namespace BlueBadgeAPI.Web.Controllers
             var UserSkillService = new UserSkillService(userSkillId);
             return UserSkillService;
         }
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
+        }
 
+        //Post
+        [Route("api/UserSkill")]
+        [HttpPost]
         /// <summary>
         /// Add skill to a user account.
         /// </summary>
@@ -32,7 +40,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UserSkillCreate(userSkill))
                 return InternalServerError();
 
-            return Ok("Skill Created");
+            string newLog = "Skill Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         /// <summary>
@@ -42,7 +54,12 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             UserSkillService UserSkillService = CreateUserSkillService();
             var userSkill = UserSkillService.GetUserSkills();
-            return Ok("Skills Reiceved");
+
+            string newLog = "All Skills Recieved";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(userSkill);
         }
 
         /// <summary>
@@ -58,7 +75,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateUserSkill(userSkill))
                 return InternalServerError();
 
-            return Ok("Skill Updated");
+            string newLog = "Skill Updated";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         /// <summary>
@@ -71,7 +92,17 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteUserSkill(userSkillId))
                 return InternalServerError();
 
-            return Ok("Skill Delete");
+            string newLog = "Skill Delete";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
+        }
+
+        public LogListItems LogData()
+        {
+            var logOne = new LogListItems();
+            return logOne;
         }
     }
 }

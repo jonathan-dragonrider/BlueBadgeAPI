@@ -89,15 +89,10 @@
   <ItemGroup>
     <Compile Include="Assignment.cs" />
     <Compile Include="IdentityModels.cs" />
-
-    <Compile Include="Migrations\202009111332390_UserIdToString.cs" />
-    <Compile Include="Migrations\202009111332390_UserIdToString.designer.cs">
-      <DependentUpon>202009111332390_UserIdToString.cs</DependentUpon>
-
-    </Compile>
-    <Compile Include="Migrations\202009101854261_UpdatedAssignment.cs" />
-    <Compile Include="Migrations\202009101854261_UpdatedAssignment.designer.cs">
-      <DependentUpon>202009101854261_UpdatedAssignment.cs</DependentUpon>
+    <Compile Include="Log.cs" />
+    <Compile Include="Migrations\202009151846323_EvenMoreLoStuff.cs" />
+    <Compile Include="Migrations\202009151846323_EvenMoreLoStuff.designer.cs">
+      <DependentUpon>202009151846323_EvenMoreLoStuff.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NeededSkill.cs" />
@@ -111,12 +106,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-
-    <EmbeddedResource Include="Migrations\202009111332390_UserIdToString.resx">
-      <DependentUpon>202009111332390_UserIdToString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009101854261_UpdatedAssignment.resx">
-      <DependentUpon>202009101854261_UpdatedAssignment.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009151846323_EvenMoreLoStuff.resx">
+      <DependentUpon>202009151846323_EvenMoreLoStuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -61,6 +61,7 @@
     <Compile Include="Assignment\AssignmentDetails.cs" />
     <Compile Include="Assignment\AssignmentEdit.cs" />
     <Compile Include="Assignment\AssignmentListItems.cs" />
+    <Compile Include="LogListItems.cs" />
     <Compile Include="NeededSkill\NeededSkillCreate.cs" />
     <Compile Include="NeededSkill\NeededSkillDetails.cs" />
     <Compile Include="NeededSkill\NeededSkillEdit.cs" />

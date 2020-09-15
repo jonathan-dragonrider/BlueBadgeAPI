@@ -60,7 +60,7 @@ namespace BlueBadgeAPI.Services
                     new TeamDetails
                     {
                         TeamId = entity.TeamId,
-                        Name = entity.Name
+                        Name = entity.Name,
                     };
             }
         }
