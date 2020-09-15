@@ -7,13 +7,13 @@ namespace BlueBadgeAPI.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class LogsNStuff : IMigrationMetadata
+    public sealed partial class EvenMoreLoStuff : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(LogsNStuff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(EvenMoreLoStuff));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009151549173_LogsNStuff"; }
+            get { return "202009151846323_EvenMoreLoStuff"; }
         }
         
         string IMigrationMetadata.Source

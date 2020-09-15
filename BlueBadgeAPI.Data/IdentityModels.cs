@@ -45,7 +45,7 @@ namespace BlueBadgeAPI.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<NeededSkill> NeededSkills { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
-        public DbSet<Log> Logs { get; set; }
+        public DbSet<LogListItems> Logs { get; set; }
 
         public ApplicationDbContext()
 

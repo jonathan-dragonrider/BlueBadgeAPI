@@ -101,9 +101,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok(newLog);
         }
 
-        public Log LogData()
+        public LogListItems LogData()
         {
-            var logOne = new Log();
+            var logOne = new LogListItems();
             return logOne;
         }
     }

@@ -16,7 +16,7 @@ namespace BlueBadgeAPI.Services
 
         public bool LogCreate(string model)
         {
-            var newLog = new Log()
+            var newLog = new LogListItems()
             {
                 WhatHappened = model
             };
@@ -26,16 +26,17 @@ namespace BlueBadgeAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<Log> GetLogs()
+        public IEnumerable<LogListItems> GetLogs()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var collection = new List<Log>();
+                var collection = new List<LogListItems>();
                 foreach (var item in ctx.Logs)
                 {
-                    var newLogListItems = new Log
+                    var newLogListItems = new LogListItems
                     {
-                        WhatHappened = item.WhatHappened
+                        WhatHappened = item.WhatHappened,
+                        LogId = item.LogId
                     };
                     collection.Add(newLogListItems);
                 }

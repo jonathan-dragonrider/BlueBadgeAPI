@@ -46,6 +46,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Get
+        [Route("api/Teams")]
         public IHttpActionResult Get()
         {
             TeamService TeamService = CreateTeamService();
@@ -83,6 +84,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Put
+        [Route("api/Teams/Update")]
         public IHttpActionResult Put(TeamDetails Team)
         {
             if (!ModelState.IsValid)

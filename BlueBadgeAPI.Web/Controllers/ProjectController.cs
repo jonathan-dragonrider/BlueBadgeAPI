@@ -47,7 +47,8 @@ namespace BlueBadgeAPI.Web.Controllers
 
         }
 
-        //Get
+        //Get 
+        [Route("api/Project")]
         public IHttpActionResult Get()
         {
             ProjectService projectService = CreateProjectService();
@@ -80,6 +81,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Get
+
         public IHttpActionResult Get(int id)
         {
             ProjectService projectService = CreateProjectService();
@@ -93,6 +95,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Put
+        [Route("api/Project/Update")]
         public IHttpActionResult Put(ProjectEdit project)
         {
             if (!ModelState.IsValid)
