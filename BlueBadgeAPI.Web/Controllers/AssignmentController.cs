@@ -17,8 +17,15 @@ namespace BlueBadgeAPI.Web.Controllers
             var assignmentService = new AssignmentService();
             return assignmentService;
         }
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
+        }
 
         //Post
+        [Route("api/Assignment")]
+        [HttpPost]
         public IHttpActionResult Post(AssignmentCreate assignment)
         {
             if (!ModelState.IsValid)
@@ -29,7 +36,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.AssignmentCreate(assignment))
                 return InternalServerError();
 
-            return Ok("Assignment Created");
+            string newLog = "Assignment Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         //Get
@@ -37,7 +48,12 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             AssignmentService assignmentService = CreateAssignmentService();
             var assignments = assignmentService.GetAssignments();
-            return Ok("Assignments Recieved");
+
+            string newLog = "All Assignments Recieved";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(assignments);
         }
 
         //Get Id
@@ -45,7 +61,12 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             AssignmentService assignmentService = CreateAssignmentService();
             var assignments = assignmentService.GetAssignmentById(id);
-            return Ok("Assignments Recieved");
+
+            string newLog = "Assignment Recieved By Id";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(assignments);
         }
 
         //Put
@@ -59,7 +80,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateAssignment(assignment))
                 return InternalServerError();
 
-            return Ok("Assignment Updated");
+            string newLog = "Assignment Updated";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
 
@@ -71,7 +96,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteAssignment(id))
                 return InternalServerError();
 
-            return Ok("Assignment Deleted");
+            string newLog = "Assignment Deleted";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
     }
 }

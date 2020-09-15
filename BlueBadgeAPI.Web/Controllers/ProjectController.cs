@@ -19,8 +19,16 @@ namespace BlueBadgeAPI.Web.Controllers
             var projectService = new ProjectService();
             return projectService;
         }
-        
+
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
+        }
+
         //Post
+        [Route("api/Project")]
+        [HttpPost]
         public IHttpActionResult Post(ProjectCreate project)
         {
             if (!ModelState.IsValid)
@@ -30,9 +38,12 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.ProjectCreate(project))
                 return InternalServerError();
-            
-            string newLog = "Project Created \n";
-            return Ok(LogData().GetLogData(newLog));
+
+            string newLog = "Project Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
 
         }
 
@@ -42,8 +53,11 @@ namespace BlueBadgeAPI.Web.Controllers
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjects();
 
-            string newLog = "Projects Recieved \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "All Projects Recieved";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(projects);
         }
         //public IHttpActionResult GetAll()
         //{
@@ -52,14 +66,17 @@ namespace BlueBadgeAPI.Web.Controllers
         //    return Ok(projects);
         //}
 
-        [Route("api/Project/{skill}")]
+        [Route("api/Project/skill/{skill}")]
         public IHttpActionResult GetByNeededSkill(string skill)
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjectByNeededSkill(skill);
 
-            string newLog = "Projects Recieved \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "Projects Recieved By Skill";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(projects);
         }
 
         //Get
@@ -68,8 +85,11 @@ namespace BlueBadgeAPI.Web.Controllers
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjectById(id);
 
-            string newLog = "Project Recieved \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "Project Recieved By Id";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(projects);
         }
 
         //Put
@@ -83,8 +103,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateProject(project))
                 return InternalServerError();
 
-            string newLog = "Project Updated \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "Project Updated";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         
@@ -96,14 +119,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteProject(id))
                 return InternalServerError();
 
-            string newLog = "Project Deleted \n";
-            return Ok(LogData().GetLogData(newLog));
-        }
+            string newLog = "Project Deleted";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
 
-        public Log LogData()
-        {
-            var logOne = new Log();
-            return logOne;
+            return Ok(newLog);
         }
     }
 }

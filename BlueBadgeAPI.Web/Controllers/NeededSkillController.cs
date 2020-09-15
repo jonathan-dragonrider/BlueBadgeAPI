@@ -8,6 +8,11 @@ namespace BlueBadgeAPI.Web.Controllers
 {
     public class NeededSkillController : ApiController
     {
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
+        }
 
         //Post
         //[Route("api/NeededSkillController/Post")]
@@ -23,8 +28,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.NeededSkillCreate(neededSkill))
                 return InternalServerError();
 
-            string newLog = "Skill Created \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "Skill Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
 
         }
 
@@ -35,8 +43,11 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             NeededSkillService neededSkillService = Service();
             var neededSkills = neededSkillService.GetNeededSkill();
-            string newLog = "Skill Created \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "All Skills Recieved";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(neededSkills);
         }
 
         //Get
@@ -46,8 +57,12 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             NeededSkillService neededSkillService = Service();
             var neededSkills = neededSkillService.GetNeededSkillById(id);
-            string newLog = "Skill Recieved \n";
-            return Ok(LogData().GetLogData(newLog));
+
+            string newLog = "Skill Recieved By Id";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(neededSkills);
         }
 
         //Put
@@ -63,8 +78,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateNeededSkill(neededSkill))
                 return InternalServerError();
 
-            string newLog = "Skill Updated \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "Skill Updated";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         //Delete
@@ -76,9 +94,12 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.DeleteNeededSkill(id))
                 return InternalServerError();
-            
-            string newLog = "Skill Dleted \n";
-            return Ok(LogData().GetLogData(newLog));
+
+            string newLog = "Skill Deleted";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         public NeededSkillService Service()

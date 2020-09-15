@@ -18,8 +18,15 @@ namespace BlueBadgeAPI.Web.Controllers
             var UserSkillService = new UserSkillService(userSkillId);
             return UserSkillService;
         }
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
+        }
 
         //Post
+        [Route("api/UserSkill")]
+        [HttpPost]
         public IHttpActionResult Post(UserSkillCreate userSkill)
         {
             if (!ModelState.IsValid)
@@ -30,8 +37,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UserSkillCreate(userSkill))
                 return InternalServerError();
 
-            string newLog = "Skill Created \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "Skill Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         //Get
@@ -40,8 +50,11 @@ namespace BlueBadgeAPI.Web.Controllers
             UserSkillService UserSkillService = CreateUserSkillService();
             var userSkill = UserSkillService.GetUserSkills();
 
-            string newLog = "Skills Recieved \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "All Skills Recieved";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(userSkill);
         }
         //public IHttpActionResult GetAll()
         //{
@@ -63,8 +76,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateUserSkill(userSkill))
                 return InternalServerError();
 
-            string newLog = "Skill Updated \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "Skill Updated";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
 
@@ -78,8 +94,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteUserSkill(userSkillId))
                 return InternalServerError();
 
-            string newLog = "Skill Deleted \n";
-            return Ok(LogData().GetLogData(newLog));
+            string newLog = "Skill Delete";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
         public Log LogData()
