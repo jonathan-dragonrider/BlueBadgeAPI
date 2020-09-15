@@ -27,6 +27,9 @@ namespace BlueBadgeAPI.Web.Controllers
         //Post
         [Route("api/UserSkill")]
         [HttpPost]
+        /// <summary>
+        /// Add skill to a user account.
+        /// </summary>
         public IHttpActionResult Post(UserSkillCreate userSkill)
         {
             if (!ModelState.IsValid)
@@ -44,7 +47,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok(newLog);
         }
 
-        //Get
+        /// <summary>
+        /// Get all user skills.
+        /// </summary>
         public IHttpActionResult Get()
         {
             UserSkillService UserSkillService = CreateUserSkillService();
@@ -56,16 +61,10 @@ namespace BlueBadgeAPI.Web.Controllers
 
             return Ok(userSkill);
         }
-        //public IHttpActionResult GetAll()
-        //{
-        //    UserSkillService UserSkillService = CreateUserSkillService();
-        //    var userSkill = UserSkillService.GetUserSkills();
-        //    return Ok(userSkill);
-        //}
 
-        
-
-        //Put
+        /// <summary>
+        /// Update existing user skill.
+        /// </summary>
         public IHttpActionResult Put(UserSkillDetails userSkill)
         {
             if (!ModelState.IsValid)
@@ -83,10 +82,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok(newLog);
         }
 
-
-        //Delete
-        //[Route("api/UserSkills/{id}")]
-        //[HttpDelete]
+        /// <summary>
+        /// Delete existing user skill.
+        /// </summary>
         public IHttpActionResult Delete(int userSkillId)
         {
             var service = CreateUserSkillService();

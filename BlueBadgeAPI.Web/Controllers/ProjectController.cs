@@ -29,6 +29,9 @@ namespace BlueBadgeAPI.Web.Controllers
         //Post
         [Route("api/Project")]
         [HttpPost]
+        /// <summary>
+        /// Create a project.
+        /// </summary>
         public IHttpActionResult Post(ProjectCreate project)
         {
             if (!ModelState.IsValid)
@@ -49,6 +52,9 @@ namespace BlueBadgeAPI.Web.Controllers
 
         //Get 
         [Route("api/Project")]
+        /// <summary>
+        /// Get all projects.
+        /// </summary>
         public IHttpActionResult Get()
         {
             ProjectService projectService = CreateProjectService();
@@ -60,14 +66,12 @@ namespace BlueBadgeAPI.Web.Controllers
 
             return Ok(projects);
         }
-        //public IHttpActionResult GetAll()
-        //{
-        //    ProjectService projectService = CreateProjectService();
-        //    var projects = projectService.GetAllProjects();
-        //    return Ok(projects);
-        //}
 
         [Route("api/Project/skill/{skill}")]
+        /// <summary>
+        /// Find projects by desired skills.
+        /// </summary>
+        [Route("api/Project/{skill}")]
         public IHttpActionResult GetByNeededSkill(string skill)
         {
             ProjectService projectService = CreateProjectService();
@@ -81,7 +85,9 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Get
-
+        /// <summary>
+        /// Get project by Id.
+        /// </summary>
         public IHttpActionResult Get(int id)
         {
             ProjectService projectService = CreateProjectService();
@@ -94,8 +100,10 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok(projects);
         }
 
-        //Put
         [Route("api/Project/Update")]
+        /// <summary>
+        /// Update existing project.
+        /// </summary>
         public IHttpActionResult Put(ProjectEdit project)
         {
             if (!ModelState.IsValid)
@@ -113,8 +121,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok(newLog);
         }
 
-        
-        //Delete
+        /// <summary>
+        /// Delete existing project.
+        /// </summary>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateProjectService();

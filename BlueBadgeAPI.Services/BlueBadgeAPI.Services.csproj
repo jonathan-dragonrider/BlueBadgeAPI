@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserService.cs" />
     <Compile Include="AssignmentService.cs" />
     <Compile Include="LogService.cs" />
     <Compile Include="NeededSkillService.cs" />

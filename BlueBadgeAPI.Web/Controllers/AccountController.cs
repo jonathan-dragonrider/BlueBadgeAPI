@@ -357,20 +357,6 @@ namespace BlueBadgeAPI.Web.Controllers
 
         }
 
-        /*public IHttpActionResult Put(User user)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var service = CreateUserService();
-
-            if (!service.UpdateUser(user))
-                return InternalServerError();
-
-            return Ok();
-        }*/
-
-
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -404,24 +390,9 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok();
         }
 
-        // Get UserId
-
-        //public IHttpActionResult Get()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var collection = new List<UserIdViewModel>();
-        //        foreach (var item in ctx.ApplicationUser)
-        //        {
-        //            var userIdListItems = new UserIdViewModel
-        //            {
-        //                UserId = item.UserId
-        //            };
-        //            collection.Add(userIdListItems);
-        //        }
-        //        return Ok(collection);
-        //    }
-        //}
+        /// <summary>
+        /// Find users by skill.
+        /// </summary>
         [Route("{skill}")]
         public IHttpActionResult GetByUserSkill(string skill)
         {
@@ -429,11 +400,27 @@ namespace BlueBadgeAPI.Web.Controllers
             var users = accountService.GetUsersBySkill(skill);
             return Ok(users);
         }
+
+        /// <summary>
+        /// Display user information.
+        /// </summary>
+        [Route("username")]
+        [HttpGet]
+        public IHttpActionResult GetUserByUserName(string userName)
+        {
+            var accountService = CreateAccountService();
+            var users = accountService.GetUserByUserName(userName);
+            return Ok(users);
+        }
+
+        //[Route("")]
         private AccountService CreateAccountService()
         {
             var accountService = new AccountService();
             return accountService;
         }
+
+
 
         protected override void Dispose(bool disposing)
         {
