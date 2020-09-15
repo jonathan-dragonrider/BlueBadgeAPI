@@ -1,9 +1,9 @@
 CONTENTS FOR THIS FILE
 ----------------------
 INTRODUCTION
-USE
 REQUIRMENTS
 INSTALLATION
+USE
 MAINTAINERS
 FUTURE ADDITIONS	
 
@@ -80,7 +80,8 @@ At this point you will need to open POSTMAN. Before you can do anything with thi
 
 In order to sign up as a user you will need to copy the URL from the ASP.Net page and paste it in the POSTMAN url bar. Make sure that you switch from GET to POST.
 
-Then, in the body fiels please create three Headings. Email, Password, and ConfirmPassword, FirstName, and LastName. Then on the right please enter the email you wish to use, as well as the password and Name you wish to use.
+Then, in the body fiels please create three Headings. Email, Password, and ConfirmPassword, About, FirstName, and LastName. Then on the right please enter the email you wish to use, as well as the password and Name you wish to use.
+For the About Section you can enter anything you want other users to know about you or your skills/experiences.
 The password must be 6 characters or more, and must have a symbol and a number included.
 
 If your screen displays a 200 Ok status then you are good to move on. 
@@ -191,6 +192,12 @@ As before the skill portion should be replaced with whatever skill you want to s
 
 After pluggin everything in you should be presented with a list for the projects that require your skill.
 
+*Activity Log*
+
+The most recent edition to the application has been the creation of an activity log. Now whenever you preform any function within the application that will be logged and storred on a datatable for future reference. 
+
+To pull this log simply go to POSTMAN open a new request and using the Get function add in the API api/Log and all activity ever preformed on the platform will be pulled for you to review.
+
 
 MAINTAINERS
 ---------------------
@@ -205,6 +212,8 @@ Future Additions
 -------------
 
 We hope to add a "Save Team" feature so project leaders can more easily reachout to individuals they have worked with in the past regarding future projects.
+
+We also hope to update the log functionality so that it can be filtered by User, Team, or Project.
 
 Furthermore addition security/privacy features and updated front end functionality will follow in the next 6 months.
 
