@@ -541,29 +541,9 @@
             Delete needed skill by Id.
             </summary>
         </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.ProjectController.Post(BlueBadgeAPI.Models.ProjectCreate)">
-            <summary>
-            Create a project.
-            </summary>
-        </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.ProjectController.Get">
-            <summary>
-            Get all projects.
-            </summary>
-        </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.ProjectController.GetByNeededSkill(System.String)">
-            <summary>
-            Find projects by desired skills.
-            </summary>
-        </member>
         <member name="M:BlueBadgeAPI.Web.Controllers.ProjectController.Get(System.Int32)">
             <summary>
             Get project by Id.
-            </summary>
-        </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.ProjectController.Put(BlueBadgeAPI.Models.ProjectEdit)">
-            <summary>
-            Update existing project.
             </summary>
         </member>
         <member name="M:BlueBadgeAPI.Web.Controllers.ProjectController.Delete(System.Int32)">
@@ -571,34 +551,14 @@
             Delete existing project.
             </summary>
         </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.TeamsController.Post(BlueBadgeAPI.Models.TeamCreate)">
-            <summary>
-            Create a project team.
-            </summary>
-        </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.TeamsController.Get">
-            <summary>
-            Get all teams.
-            </summary>
-        </member>
         <member name="M:BlueBadgeAPI.Web.Controllers.TeamsController.Get(System.Int32)">
             <summary>
             Get a team by Id.
             </summary>
         </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.TeamsController.Put(BlueBadgeAPI.Models.TeamDetails)">
-            <summary>
-            Update existing team.
-            </summary>
-        </member>
         <member name="M:BlueBadgeAPI.Web.Controllers.TeamsController.Delete(System.Int32)">
             <summary>
             Delete existing team.
-            </summary>
-        </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.UserSkillsController.Post(BlueBadgeAPI.Models.UserSkillCreate)">
-            <summary>
-            Add skill to a user account.
             </summary>
         </member>
         <member name="M:BlueBadgeAPI.Web.Controllers.UserSkillsController.Get">

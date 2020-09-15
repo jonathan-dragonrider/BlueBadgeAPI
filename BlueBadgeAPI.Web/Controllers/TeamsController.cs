@@ -64,19 +64,6 @@ namespace BlueBadgeAPI.Web.Controllers
 
             return Ok(Teams);
         }
-        //public IHttpActionResult GetAll()
-        //{
-        //    TeamService TeamService = CreateTeamService();
-        //    var Teams = TeamService.GetTeams();
-
-        //    string newLog = "Team Deleted";
-        //    var logService = CreateLogService();
-        //    logService.LogCreate(newLog);
-
-        //    return Ok(newLog);
-        //}
-            return Ok("Teams Recieved");
-        }
 
         /// <summary>
         /// Get a team by Id.
@@ -132,4 +119,6 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok(newLog);
         }
     }
-}
+ }
+
+
