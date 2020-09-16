@@ -39,7 +39,7 @@ namespace BlueBadgeAPI.Services
                 {
                     var projectListItems = new ProjectListItems
                     {
-                        ProjectOwnerId = item.UserId,
+                        ProjectOwnerId = item.ProjectCreator.FirstName,
                         // add owner username instead
                         ProjectId = item.ProjectId,
                         Title = item.Title

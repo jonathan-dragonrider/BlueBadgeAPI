@@ -71,7 +71,6 @@ namespace BlueBadgeAPI.Web.Controllers
         /// <summary>
         /// Find projects by desired skills.
         /// </summary>
-        [Route("api/Project/{skill}")]
         public IHttpActionResult GetByNeededSkill(string skill)
         {
             ProjectService projectService = CreateProjectService();
@@ -126,6 +125,7 @@ namespace BlueBadgeAPI.Web.Controllers
         /// <summary>
         /// Delete existing project.
         /// </summary>
+        [Route("api/Project/{id}")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateProjectService();
