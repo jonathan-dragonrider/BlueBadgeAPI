@@ -90,9 +90,9 @@
     <Compile Include="Assignment.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="Migrations\202009162107112_DummyData.cs" />
-    <Compile Include="Migrations\202009162107112_DummyData.designer.cs">
-      <DependentUpon>202009162107112_DummyData.cs</DependentUpon>
+    <Compile Include="Migrations\202009162115493_GetProjectSolutionSecond.cs" />
+    <Compile Include="Migrations\202009162115493_GetProjectSolutionSecond.designer.cs">
+      <DependentUpon>202009162115493_GetProjectSolutionSecond.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NeededSkill.cs" />
@@ -106,8 +106,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009162107112_DummyData.resx">
-      <DependentUpon>202009162107112_DummyData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009162115493_GetProjectSolutionSecond.resx">
+      <DependentUpon>202009162115493_GetProjectSolutionSecond.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

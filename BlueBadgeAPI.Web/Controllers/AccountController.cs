@@ -18,6 +18,7 @@ using BlueBadgeAPI.Web.Providers;
 using BlueBadgeAPI.Web.Results;
 using BlueBadgeAPI.Data;
 using System.Data.Entity.Validation;
+using BlueBadgeAPI.Services;
 
 namespace BlueBadgeAPI.Web.Controllers
 {
@@ -353,8 +354,17 @@ namespace BlueBadgeAPI.Web.Controllers
                 }
             }
 
-                return Ok();
+            string newLog = "User Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
 
+            return Ok(newLog);
+
+        }
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
         }
 
         // POST api/Account/RegisterExternal
@@ -404,7 +414,7 @@ namespace BlueBadgeAPI.Web.Controllers
         /// <summary>
         /// Display user information.
         /// </summary>
-        [Route("username")]
+        [Route("userName")]
         [HttpGet]
         public IHttpActionResult GetUserByUserName(string userName)
         {

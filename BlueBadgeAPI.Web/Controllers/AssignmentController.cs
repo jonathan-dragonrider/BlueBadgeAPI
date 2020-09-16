@@ -79,6 +79,7 @@ namespace BlueBadgeAPI.Web.Controllers
         /// <summary>
         /// Update existing assignment.
         /// </summary>
+        [Route("api/Assignment")]
         public IHttpActionResult Put(AssignmentEdit assignment)
         {
             if (!ModelState.IsValid)
