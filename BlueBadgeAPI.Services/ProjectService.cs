@@ -30,25 +30,29 @@ namespace BlueBadgeAPI.Services
             }
         }
 
-        public IEnumerable<ProjectListItems> GetProjects()
+        public List<ProjectListItems> GetProjects()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var collection = new List<ProjectListItems>();
-                foreach (var item in ctx.Projects)
+
+                var projectEntity = ctx.Projects;
+
+                var projectListItems = new List<ProjectListItems>();
+
+                foreach (var project in projectEntity)
                 {
-                    var projectListItems = new ProjectListItems
+                    var projectListItem = new ProjectListItems()
                     {
-                        ProjectOwnerId = item.UserId,
-                        // add owner username instead
-                        ProjectId = item.ProjectId,
-                        Title = item.Title
-                        // add skills required
-                        // have an option to disable skill once a person of that skill is added - says something like: skill already fulfilled
+                        ProjectCreatorUserName = project.ProjectCreator.UserName,
+                        ProjectId = project.ProjectId,
+                        Title = project.Title
                     };
-                    collection.Add(projectListItems);
+
+                    projectListItems.Add(projectListItem);
                 }
-                return collection;
+
+                return projectListItems;
+
             }
         }
 
