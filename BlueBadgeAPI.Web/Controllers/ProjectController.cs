@@ -125,6 +125,7 @@ namespace BlueBadgeAPI.Web.Controllers
         /// <summary>
         /// Delete existing project.
         /// </summary>
+        [Route("api/Project/{id}")]
         public IHttpActionResult Delete(int id)
         {
             var service = CreateProjectService();
