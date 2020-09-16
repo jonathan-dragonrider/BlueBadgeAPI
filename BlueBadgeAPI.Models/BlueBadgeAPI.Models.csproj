@@ -57,25 +57,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssignmentCreate.cs" />
-    <Compile Include="AssignmentDetails.cs" />
-    <Compile Include="AssignmentEdit.cs" />
-    <Compile Include="AssignmentListItems.cs" />
-    <Compile Include="NeededSkillCreate.cs" />
-    <Compile Include="NeededSkillDetails.cs" />
-    <Compile Include="NeededSkillEdit.cs" />
-    <Compile Include="NeededSkillListItems.cs" />
-    <Compile Include="ProjectCreate.cs" />
-    <Compile Include="ProjectDetails.cs" />
-    <Compile Include="ProjectEdit.cs" />
-    <Compile Include="ProjectListItems.cs" />
+    <Compile Include="Assignment\AssignmentCreate.cs" />
+    <Compile Include="Assignment\AssignmentDetails.cs" />
+    <Compile Include="Assignment\AssignmentEdit.cs" />
+    <Compile Include="Assignment\AssignmentListItems.cs" />
+    <Compile Include="LogListItems.cs" />
+    <Compile Include="NeededSkill\NeededSkillCreate.cs" />
+    <Compile Include="NeededSkill\NeededSkillDetails.cs" />
+    <Compile Include="NeededSkill\NeededSkillEdit.cs" />
+    <Compile Include="NeededSkill\NeededSkillListItems.cs" />
+    <Compile Include="Project\ProjectCreate.cs" />
+    <Compile Include="Project\ProjectDetails.cs" />
+    <Compile Include="Project\ProjectEdit.cs" />
+    <Compile Include="Project\ProjectListItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeamCreate.cs" />
-    <Compile Include="TeamDetails.cs" />
-    <Compile Include="TeamListItems.cs" />
-    <Compile Include="UserSkillCreate.cs" />
-    <Compile Include="UserSkillDetails.cs" />
-    <Compile Include="UserSkillListItems.cs" />
+    <Compile Include="Team\TeamCreate.cs" />
+    <Compile Include="Team\TeamDetails.cs" />
+    <Compile Include="Team\TeamListItems.cs" />
+    <Compile Include="UserSkill\UserSkillCreate.cs" />
+    <Compile Include="UserSkill\UserSkillDetails.cs" />
+    <Compile Include="UserSkill\UserSkillListItems.cs" />
+    <Compile Include="User\UserDetail.cs" />
+    <Compile Include="User\UserProject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -13,13 +13,25 @@ namespace BlueBadgeAPI.Web.Controllers
 {
     public class ProjectController : ApiController
     {
+
         private ProjectService CreateProjectService()
         {
             var projectService = new ProjectService();
             return projectService;
         }
-        
+
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
+        }
+
         //Post
+        [Route("api/Project")]
+        [HttpPost]
+        /// <summary>
+        /// Create a project.
+        /// </summary>
         public IHttpActionResult Post(ProjectCreate project)
         {
             if (!ModelState.IsValid)
@@ -29,41 +41,71 @@ namespace BlueBadgeAPI.Web.Controllers
 
             if (!service.ProjectCreate(project))
                 return InternalServerError();
-            return Ok();
+
+            string newLog = "Project Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
 
         }
 
-        //Get
+        //Get 
+        [Route("api/Project")]
+        /// <summary>
+        /// Get all projects.
+        /// </summary>
         public IHttpActionResult Get()
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjects();
+
+            string newLog = "All Projects Recieved";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
             return Ok(projects);
         }
-        //public IHttpActionResult GetAll()
-        //{
-        //    ProjectService projectService = CreateProjectService();
-        //    var projects = projectService.GetAllProjects();
-        //    return Ok(projects);
-        //}
 
         [Route("api/Project/skill/{skill}")]
+
+        /// <summary>
+        /// Find projects by desired skills.
+        /// </summary>
+        [Route("api/Project/{skill}")]
+
         public IHttpActionResult GetByNeededSkill(string skill)
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjectByNeededSkill(skill);
+
+            string newLog = "Projects Recieved By Skill";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
             return Ok(projects);
         }
 
         //Get
+        /// <summary>
+        /// Get project by Id.
+        /// </summary>
         public IHttpActionResult Get(int id)
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjectById(id);
+
+            string newLog = "Project Recieved By Id";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
             return Ok(projects);
         }
 
-        //Put
+        [Route("api/Project/Update")]
+        /// <summary>
+        /// Update existing project.
+        /// </summary>
         public IHttpActionResult Put(ProjectEdit project)
         {
             if (!ModelState.IsValid)
@@ -74,11 +116,16 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateProject(project))
                 return InternalServerError();
 
-            return Ok();
+            string newLog = "Project Updated";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
-        
-        //Delete
+        /// <summary>
+        /// Delete existing project.
+        /// </summary>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateProjectService();
@@ -86,7 +133,11 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteProject(id))
                 return InternalServerError();
 
-            return Ok();
+            string newLog = "Project Deleted";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
     }
 }

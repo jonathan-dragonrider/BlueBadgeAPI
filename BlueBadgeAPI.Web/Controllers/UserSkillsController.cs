@@ -18,8 +18,18 @@ namespace BlueBadgeAPI.Web.Controllers
             var UserSkillService = new UserSkillService(userSkillId);
             return UserSkillService;
         }
+        private LogService CreateLogService()
+        {
+            var logService = new LogService();
+            return logService;
+        }
 
         //Post
+        [Route("api/UserSkill")]
+        [HttpPost]
+        /// <summary>
+        /// Add skill to a user account.
+        /// </summary>
         public IHttpActionResult Post(UserSkillCreate userSkill)
         {
             if (!ModelState.IsValid)
@@ -30,26 +40,31 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UserSkillCreate(userSkill))
                 return InternalServerError();
 
-            return Ok();
+            string newLog = "Skill Created";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
-        //Get
+        /// <summary>
+        /// Get all user skills.
+        /// </summary>
         public IHttpActionResult Get()
         {
             UserSkillService UserSkillService = CreateUserSkillService();
             var userSkill = UserSkillService.GetUserSkills();
+
+            string newLog = "All Skills Recieved";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
             return Ok(userSkill);
         }
-        //public IHttpActionResult GetAll()
-        //{
-        //    UserSkillService UserSkillService = CreateUserSkillService();
-        //    var userSkill = UserSkillService.GetUserSkills();
-        //    return Ok(userSkill);
-        //}
 
-        
-
-        //Put
+        /// <summary>
+        /// Update existing user skill.
+        /// </summary>
         public IHttpActionResult Put(UserSkillDetails userSkill)
         {
             if (!ModelState.IsValid)
@@ -60,13 +75,16 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateUserSkill(userSkill))
                 return InternalServerError();
 
-            return Ok();
+            string newLog = "Skill Updated";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
         }
 
-
-        //Delete
-        //[Route("api/UserSkills/{id}")]
-        //[HttpDelete]
+        /// <summary>
+        /// Delete existing user skill.
+        /// </summary>
         public IHttpActionResult Delete(int userSkillId)
         {
             var service = CreateUserSkillService();
@@ -74,7 +92,17 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteUserSkill(userSkillId))
                 return InternalServerError();
 
-            return Ok();
+            string newLog = "Skill Delete";
+            var logService = CreateLogService();
+            logService.LogCreate(newLog);
+
+            return Ok(newLog);
+        }
+
+        public LogListItems LogData()
+        {
+            var logOne = new LogListItems();
+            return logOne;
         }
     }
 }

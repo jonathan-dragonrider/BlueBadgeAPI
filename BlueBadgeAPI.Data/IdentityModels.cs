@@ -4,6 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BlueBadgeAPI.Web.Controllers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -44,6 +45,7 @@ namespace BlueBadgeAPI.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<NeededSkill> NeededSkills { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
+        public DbSet<LogListItems> Logs { get; set; }
 
         public ApplicationDbContext()
 

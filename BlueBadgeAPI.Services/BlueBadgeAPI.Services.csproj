@@ -57,7 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserService.cs" />
     <Compile Include="AssignmentService.cs" />
+    <Compile Include="LogService.cs" />
     <Compile Include="NeededSkillService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,11 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlueBadgeAPI.Data\BlueBadgeAPI.Data.csproj">
-      <Project>{f000ffec-cdb7-4223-b94a-1675b37184e3}</Project>
+      <Project>{F000FFEC-CDB7-4223-B94A-1675B37184E3}</Project>
       <Name>BlueBadgeAPI.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlueBadgeAPI.Models\BlueBadgeAPI.Models.csproj">
-      <Project>{9fabed61-6efa-4a51-9c31-71831f57b4ec}</Project>
+      <Project>{9FABED61-6EFA-4A51-9C31-71831F57B4EC}</Project>
       <Name>BlueBadgeAPI.Models</Name>
     </ProjectReference>
   </ItemGroup>
