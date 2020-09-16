@@ -14,8 +14,9 @@ namespace BlueBadgeAPI.Web.Controllers
     {
         private TeamService CreateTeamService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var TeamService = new TeamService(userId);
+            // When you get back from lunch, take out userId dependence
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var TeamService = new TeamService();
             return TeamService;
         }
 

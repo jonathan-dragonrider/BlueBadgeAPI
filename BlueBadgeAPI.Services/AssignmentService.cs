@@ -16,17 +16,25 @@ namespace BlueBadgeAPI.Services
         }
         public bool AssignmentCreate(AssignmentCreate model)
         {
-            var newAssignment = new Assignment()
-            {
-                UserId = model.UserId,
-                ProjectId = model.ProjectId,
-                TeamId = model.TeamId
-            };
             using (var ctx = new ApplicationDbContext())
             {
+                var userEntity =
+                    ctx
+                        .Users
+                        .Single(u => u.UserName == model.UserName);
+
+                var newAssignment = new Assignment()
+                {
+                    UserId = userEntity.Id,
+                    ProjectId = model.ProjectId,
+                    TeamId = model.TeamId
+                };
+
                 ctx.Assignments.Add(newAssignment);
                 return ctx.SaveChanges() == 1;
+
             }
+
         }
         public IEnumerable<AssignmentListItems> GetAssignments()
         {

@@ -19,15 +19,22 @@ namespace BlueBadgeAPI.Services
 
         public bool UserSkillCreate(UserSkillCreate model)
         {
-            var newUserSkill = new UserSkill()
-            {
-                Skill = model.Skill,
-                UserId = model.UserId
-            };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.UserSkills.Add(newUserSkill);
+                var userEntity =
+                    ctx
+                        .Users
+                        .Single(u => u.UserName == model.UserName);
+
+                var newuserSkill = new UserSkill()
+                {
+                    UserId = userEntity.Id,
+                    Skill = model.Skill
+                };
+
+                ctx.UserSkills.Add(newuserSkill);
                 return ctx.SaveChanges() == 1;
+
             }
         }
         public IEnumerable<UserSkillListItems> GetUserSkills()

@@ -10,11 +10,11 @@ namespace BlueBadgeAPI.Services
 {
     public class TeamService
     {
-        private readonly Guid _userId;
+        //private readonly Guid _userId;
 
-        public TeamService(Guid userId)
+        public TeamService()
         {
-            _userId = userId;
+            //_userId = userId;
         }
 
         public bool TeamCreate(TeamCreate model)
