@@ -25,7 +25,7 @@ namespace BlueBadgeAPI.Web.Controllers
         }
 
         //Post
-        [Route("api/UserSkill")]
+        [Route("api/UserSkills")]
         [HttpPost]
         /// <summary>
         /// Add skill to a user account.
