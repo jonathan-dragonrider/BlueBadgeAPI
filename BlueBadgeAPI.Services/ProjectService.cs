@@ -29,28 +29,6 @@ namespace BlueBadgeAPI.Services
                 return ctx.SaveChanges() == 1;
             }
         }
- 
-        //public IEnumerable<ProjectListItems> GetAllProjects()
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var collection = new List<ProjectListItems>();
-        //        foreach (var item in ctx.Projects)
-        //        {
-        //            var newProjectListItems = new ProjectListItems
-        //            {
-        //                Title = item.Title,
-        //                ProjectId = item.ProjectId
-        //            };
-
-        //            collection.Add(newProjectListItems);
-                    
-        //        }
-
-        //        return collection;
-
-        //    }
-        //}
 
         public IEnumerable<ProjectListItems> GetProjects()
         {
@@ -62,8 +40,11 @@ namespace BlueBadgeAPI.Services
                     var projectListItems = new ProjectListItems
                     {
                         ProjectOwnerId = item.UserId,
+                        // add owner username instead
                         ProjectId = item.ProjectId,
                         Title = item.Title
+                        // add skills required
+                        // have an option to disable skill once a person of that skill is added - says something like: skill already fulfilled
                     };
                     collection.Add(projectListItems);
                 }
@@ -75,18 +56,51 @@ namespace BlueBadgeAPI.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
+                // Title, ProjectId, Description, CreatorName, CreatorUserName
+                var projectEntity =
                     ctx
                         .Projects
                         .Single(e => e.ProjectId == id);
-                return
-                    new ProjectDetails
-                    {
-                        ProjectId = entity.ProjectId,
-                        Title = entity.Title,
-                        Description = entity.Description,
-                        Creator = entity.ProjectCreator.Name
-                    };
+
+                // Teams, ProjectMembers
+                var assignmentEntity =
+                    ctx
+                        .Assignments
+                        .Where(a => a.ProjectId == id);
+
+                var projectMembers = new List<string>();
+
+                foreach (var assignment in assignmentEntity)
+                    projectMembers.Add(ctx.Users.Single(u => u.Id == assignment.UserId).UserName);
+
+                var projectTeamsUnfiltered = new List<string>();
+
+                foreach (var assignment in assignmentEntity)
+                    projectTeamsUnfiltered.Add(ctx.Teams.Single(t => t.TeamId == assignment.TeamId).Name);
+
+                List<string> projectTeamsDistinct = projectTeamsUnfiltered.Distinct().ToList();
+
+                var neededSkillsEntity =
+                    ctx
+                        .NeededSkills
+                        .Where(s => s.ProjectId == id);
+
+                List<string> neededSkills = new List<string>();
+
+                foreach (var skill in neededSkillsEntity)
+                    neededSkills.Add(skill.Skill);
+
+                return new ProjectDetails
+                {
+                    Title = projectEntity.Title,
+                    ProjectId = projectEntity.ProjectId,
+                    Description = projectEntity.Description,
+                    CreatorName = projectEntity.ProjectCreator.Name,
+                    CreatorUserName = projectEntity.ProjectCreator.UserName,
+                    Teams = projectTeamsDistinct,
+                    ProjectMembers = projectMembers,
+                    SkillsNeeded = neededSkills
+                };
             }
         }
 

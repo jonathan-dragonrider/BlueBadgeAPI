@@ -84,10 +84,13 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok(projects);
         }
 
+
         //Get
         /// <summary>
         /// Get project by Id.
         /// </summary>
+        [Route("api/Project/{id}")]
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             ProjectService projectService = CreateProjectService();
@@ -96,7 +99,6 @@ namespace BlueBadgeAPI.Web.Controllers
             string newLog = "Project Recieved By Id";
             var logService = CreateLogService();
             logService.LogCreate(newLog);
-
             return Ok(projects);
         }
 

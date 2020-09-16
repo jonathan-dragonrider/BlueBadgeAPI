@@ -28,7 +28,6 @@ namespace BlueBadgeAPI.Web.Controllers
         /// Create an assignment.
         /// </summary>
         [Route("api/Assignment")]
-        [HttpPost]
         public IHttpActionResult Post(AssignmentCreate assignment)
         {
             if (!ModelState.IsValid)
@@ -49,6 +48,7 @@ namespace BlueBadgeAPI.Web.Controllers
         /// <summary>
         /// Get all assignments.
         /// </summary>
+        [Route("api/Assignment")]
         public IHttpActionResult Get()
         {
             AssignmentService assignmentService = CreateAssignmentService();
