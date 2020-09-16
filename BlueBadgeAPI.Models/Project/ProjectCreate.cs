@@ -8,7 +8,7 @@ namespace BlueBadgeAPI.Models
 {
     public class ProjectCreate
     {
-        public string UserName { get; set; }
+        public string CreatorUserName { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
     }

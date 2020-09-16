@@ -23,7 +23,7 @@ namespace BlueBadgeAPI.Services
                 var userEntity =
                     ctx
                         .Users
-                        .Single(u => u.UserName == model.UserName);
+                        .Single(u => u.UserName == model.CreatorUserName);
 
 
                 var newProject = new Project()
