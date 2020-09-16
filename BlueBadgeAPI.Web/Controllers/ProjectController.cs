@@ -67,7 +67,7 @@ namespace BlueBadgeAPI.Web.Controllers
             return Ok(projects);
         }
 
-        [Route("api/Project/skill/{skill}")]
+        [Route("api/Project/Skill/{skill}")]
         /// <summary>
         /// Find projects by desired skills.
         /// </summary>
