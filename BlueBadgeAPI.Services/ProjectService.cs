@@ -17,14 +17,22 @@ namespace BlueBadgeAPI.Services
 
         public bool ProjectCreate(ProjectCreate model)
         {
-            var newProject = new Project()
-            {
-                UserId = model.UserId,
-                Title = model.Title,
-                Description = model.Description
-            };
             using (var ctx = new ApplicationDbContext())
             {
+
+                var userEntity =
+                    ctx
+                        .Users
+                        .Single(u => u.UserName == model.UserName);
+
+
+                var newProject = new Project()
+                {
+                    UserId = userEntity.Id,
+                    Title = model.Title,
+                    Description = model.Description
+                };
+
                 ctx.Projects.Add(newProject);
                 return ctx.SaveChanges() == 1;
             }
