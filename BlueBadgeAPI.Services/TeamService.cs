@@ -52,15 +52,32 @@ namespace BlueBadgeAPI.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                // TeamId, Name
                 var entity =
                     ctx
                         .Teams
                         .Single(e => e.TeamId == id);
+
+                // Project Name, Team Members
+                var assignmentEntity =
+                    ctx
+                        .Assignments
+                        .Where(a => a.TeamId == id);
+
+                var teamMembers = new List<string>();
+
+                foreach (var assignment in assignmentEntity)
+                    teamMembers.Add(ctx.Users.Single(u => u.Id == assignment.UserId).UserName);
+
+                var projectId = assignmentEntity.First().ProjectId;
+                
                 return
                     new TeamDetails
                     {
                         TeamId = entity.TeamId,
-                        Name = entity.Name
+                        Name = entity.Name,
+                        ProjectName = ctx.Projects.Single(p => p.ProjectId == projectId).Title,
+                        TeamMembers = teamMembers
                     };
             }
         }

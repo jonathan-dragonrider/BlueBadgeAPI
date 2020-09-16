@@ -42,28 +42,31 @@ namespace BlueBadgeAPI.Web.Controllers
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjects();
-            return Ok("Projects Recieved");
+            return Ok(projects);
         }
 
         /// <summary>
         /// Find projects by desired skills.
         /// </summary>
-        [Route("api/Project/{skill}")]
-        public IHttpActionResult GetByNeededSkill(string skill)
-        {
-            ProjectService projectService = CreateProjectService();
-            var projects = projectService.GetProjectByNeededSkill(skill);
-            return Ok("Projects Recieved");
-        }
+        //[Route("api/Project/{skill}")]
+        //[HttpGet]
+        //public IHttpActionResult GetByNeededSkill(string skill)
+        //{
+        //    ProjectService projectService = CreateProjectService();
+        //    var projects = projectService.GetProjectByNeededSkill(skill);
+        //    return Ok(projects);
+        //}
 
         /// <summary>
         /// Get project by Id.
         /// </summary>
+        [Route("api/Project/{id}")]
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjectById(id);
-            return Ok("Projects Recieved");
+            return Ok(projects);
         }
 
         /// <summary>

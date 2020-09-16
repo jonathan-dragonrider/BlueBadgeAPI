@@ -551,11 +551,6 @@
             Get all projects.
             </summary>
         </member>
-        <member name="M:BlueBadgeAPI.Web.Controllers.ProjectController.GetByNeededSkill(System.String)">
-            <summary>
-            Find projects by desired skills.
-            </summary>
-        </member>
         <member name="M:BlueBadgeAPI.Web.Controllers.ProjectController.Get(System.Int32)">
             <summary>
             Get project by Id.

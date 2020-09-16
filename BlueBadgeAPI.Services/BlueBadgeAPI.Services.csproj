@@ -75,7 +75,7 @@
       <Name>BlueBadgeAPI.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlueBadgeAPI.Models\BlueBadgeAPI.Models.csproj">
-      <Project>{9fabed61-6efa-4a51-9c31-71831f57b4ec}</Project>
+      <Project>{9FABED61-6EFA-4A51-9C31-71831F57B4EC}</Project>
       <Name>BlueBadgeAPI.Models</Name>
     </ProjectReference>
   </ItemGroup>

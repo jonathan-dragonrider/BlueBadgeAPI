@@ -41,8 +41,8 @@ namespace BlueBadgeAPI.Web.Controllers
         public IHttpActionResult Get()
         {
             TeamService TeamService = CreateTeamService();
-            var Teams = TeamService.GetTeams();
-            return Ok("Teams Recieved");
+            var teams = TeamService.GetTeams();
+            return Ok(teams);
         }
 
         /// <summary>
@@ -51,8 +51,8 @@ namespace BlueBadgeAPI.Web.Controllers
         public IHttpActionResult Get(int id)
         {
             TeamService TeamService = CreateTeamService();
-            var Teams = TeamService.GetTeamById(id);
-            return Ok("Team Recieved");
+            var teams = TeamService.GetTeamById(id);
+            return Ok(teams);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.UpdateTeam(Team))
                 return InternalServerError();
 
-            return Ok("Teams Updated");
+            return Ok("Team Updated");
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace BlueBadgeAPI.Web.Controllers
             if (!service.DeleteTeam(id))
                 return InternalServerError();
 
-            return Ok("Teams Deleted");
+            return Ok("Team Deleted");
         }
     }
 }
