@@ -30,9 +30,13 @@ In this application users have the ability to create projects, set up teams, as 
 
 REQUIRMENTS
 ------------
-This module requires you to have Microsoft Visual Studio. You can download this program here https://visualstudio.microsoft.com/downloads/. You must also have access to POSTMAN. 
+This module requires you to have Microsoft Visual Studio. You can download this program here https://visualstudio.microsoft.com/downloads/. You must also have access to POSTMAN.
+
 If you do not have it you can dowlaod that here https://www.postman.com/downloads/. 
-Finally we have a set of Dummy Data available if you do not want start the application with a blank slate. You can find the Dummy Data set here https://github.com/jonphilk/BlueBadgeAPIDummyData. Please see the INSTALLATION section for details on how to implement it.
+
+Finally we have a set of Dummy Data available if you do not want start the application with a blank slate. You can find the Dummy Data set here https://github.com/jonphilk/BlueBadgeAPIDummyData. 
+Please see the INSTALLATION section for details on how to implement it.
+
 The following Nuget Pacackages should be already installed when you download to Visual Studio. However you may need to update some of the versions. 
 Please verify the follwing NuGet packages are present before using the application:
 
