@@ -110,8 +110,8 @@ If you want to use the Dummy Data provided here https://github.com/jonphilk/Blue
 First begin by downloading the files from the GitHub repository onto your computer. 
 Next extract the files from the zip folder and store them on your local drive or desktop.
 After that is done open the program. 
-Now after the DummyData program is running in Visual Studio open the Together in Teams Application as well.
-When both programs are opened in Visual Studio first hit the run/play button in DummyData, and then the Run/Play button in Together in Teams. What should happen here is the data from the DummyData program will be seeded into your Together in Teams database. A console screen should appear to confirm these additions.
+Now after the DummyData program is open in Visual Studio open the Together in Teams Application as well.
+When both programs are opened in Visual Studio first hit the run/play button in Together in Teams, and then the Run/Play button in DummyData. What should happen here is the data from the DummyData program will be seeded into your Together in Teams database. A console screen should appear to confirm these additions.
 
 If you do not want to seed your database with the Dummy Data then dis regard these steps and open the Together In Teams application by itself. Steps will follow in the USE section that will tell you how to create entries and how you can manipulate the data once you have created it.
 
