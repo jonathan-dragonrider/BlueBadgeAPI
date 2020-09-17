@@ -2,18 +2,13 @@ CONTENTS FOR THIS FILE
 ----------------------
 INTRODUCTION
 
-
 REQUIRMENTS
-
 
 INSTALLATION
 
-
 USE
 
-
 MAINTAINERS
-
 
 FUTURE ADDITIONS	
 
@@ -41,36 +36,67 @@ The following Nuget Pacackages should be already installed when you download to 
 Please verify the follwing NuGet packages are present before using the application:
 
 Antlr v3.5.0.2
+
 bootstrap v4.5.2
+
 EntityFramework v6.4.4
+
 DummyData v0.0.46
+
 jQuery v3.5.1
+
 jQuery.Validation v1.19.2
+
 Microsoft.aspNet.Identity.Core v2.2.3
+
 Microsoft.AspNet.Identity.EntityFramework v2.2.3
+
 Microft.AspNet.Identity.Orwin v2.2.3
+
 Microsoft.AspNet.WebApi v5.2.7
+
 Microsoft.AspNet.WebApi.Client v5.2.7
+
 Microsoft.AspNet.WebApi.Core v5.2.7
+
 Microsoft.AspNet.WebApi.HelpPage v5.2.7
+
 Microsoft.AspNet.WebApi.Owin v4.1.1
+
 Microsoft.AspNet.WebApi.WebHost v5.2.7
+
 Microsoft.CodeDom.Providers.DotNetCompilerPlatform v3.6.0
+
 Microsoft.jQuery.Unobtrusive.Validation v3.2.11
+
 Microsoft.Owin v4.1.1
+
 Microsoft.Owin.Host.SystemWeb v4.1.1
+
 Microsoft.Owin.Security v4.1.1
+
 Microsoft.Owin.Security.Cookies v4.1.1
+
 Microsoft.Owin.Security.Facebook v4.1.1
+
 Microsoft.Owin.Security.Google v4.1.1
+
 Microsoft.Owin.Security.MicrosoftAccount v4.1.1
+
 Microsoft.Owin.Security.OAuth v4.1.1
+
 Microsoft.Owin.Security.Twitter v4.1.1
+
 Microsoft.Web.Infrastructure v1.0.0
+
 Modernizr v2.8.3
+
 Newtonsoft.Json v12.0.3
+
 Owin v1.0.0
+
 popper.js v1.16.1
+
 WebGrease v1.6.0
 
 
@@ -231,7 +257,9 @@ MAINTAINERS
 ---------------------
 
 Kyle Rambo (Kyle Rambo) krambo89@gmail.com
+
 Alex Blansette (Alex Blansette) alexander.blansette@gmail.com
+
 Jon Kline (Jon Kline) jonphilk@gmail.com
 
 This project was entirely self funded, and was made possible thanks to the hard work and dedication of the contributor listed above.
