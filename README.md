@@ -262,7 +262,7 @@ Alex Blansette (Alex Blansette) alexander.blansette@gmail.com
 
 Jon Kline (Jon Kline) jonphilk@gmail.com
 
-This project was entirely self funded, and was made possible thanks to the hard work and dedication of the contributor listed above.
+This project was entirely self funded, and was made possible thanks to the hard work and dedication of the contributors listed above.
 
 Future Additions
 -------------
